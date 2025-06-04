@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/widgets.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,7 +30,13 @@
             <span class="project-name">Quang_Tran_Minh.xcworkspace</span>
         </div>
         <div class="window-controls">
-            <button class="control-btn" id="themeToggle">
+            <button class="control-btn" id="downloadToggle" title="Export CV">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+            </button>
+            <div class="download-badge">PDF</div>
+            <button class="control-btn" id="themeToggle" title="Toggle Theme">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M12 18c-.89 0-1.74-.19-2.5-.54C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.46C10.26 6.19 11.11 6 12 6a6 6 0 0 1 0 12z" />
@@ -78,6 +85,10 @@
                                 <div class="file-item" data-file="education">
                                     <span class="file-icon">🎓</span>
                                     <span class="file-name">Education.swift</span>
+                                </div>
+                                <div class="file-item" data-file="git-history">
+                                    <span class="file-icon">🌳</span>
+                                    <span class="file-name">CareerHistory.git</span>
                                 </div>
                                 <div class="file-item" data-file="contact">
                                     <span class="file-icon">📞</span>
@@ -356,6 +367,135 @@
 }</pre>
                     </div>
 
+                    <!-- Git History Content -->
+                    <div class="file-content" id="git-history-content">
+                        <div class="git-terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-controls">
+                                    <span class="terminal-control close"></span>
+                                    <span class="terminal-control minimize"></span>
+                                    <span class="terminal-control maximize"></span>
+                                </div>
+                                <div class="terminal-title">Terminal - Career Timeline</div>
+                            </div>
+                            <div class="terminal-content">
+                                <div class="terminal-line">
+                                    <span class="prompt">quang@career-journey:~$</span>
+                                    <span class="command">git log --oneline --graph --all</span>
+                                </div>
+                                <div class="git-graph">
+                                    <div class="commit-line current">
+                                        <span class="graph">*</span>
+                                        <span class="hash">a7f3b21</span>
+                                        <span class="message">Senior iOS Developer at CBTW - Shahid Platform</span>
+                                        <span class="branch">(HEAD -> main, origin/main)</span>
+                                        <span class="date">2024-present</span>
+                                    </div>
+                                    <div class="commit-line">
+                                        <span class="graph">|</span>
+                                    </div>
+                                    <div class="commit-line major">
+                                        <span class="graph">*</span>
+                                        <span class="hash">d4c2a90</span>
+                                        <span class="message">Product Manager & Senior iOS Developer at Unit Vietnam</span>
+                                        <span class="branch">(tag: leadership-era)</span>
+                                        <span class="date">2017-2024</span>
+                                    </div>
+                                    <div class="commit-line">
+                                        <span class="graph">|\</span>
+                                    </div>
+                                    <div class="commit-line achievement">
+                                        <span class="graph">| *</span>
+                                        <span class="hash">8b5e1f3</span>
+                                        <span class="message">🚀 Delivered 10+ iOS applications (4.5+ stars)</span>
+                                        <span class="branch">(feat/mobile-excellence)</span>
+                                        <span class="date">2021-2024</span>
+                                    </div>
+                                    <div class="commit-line achievement">
+                                        <span class="graph">| *</span>
+                                        <span class="hash">f2a9c84</span>
+                                        <span class="message">👥 Led cross-functional teams (20+ developers)</span>
+                                        <span class="branch">(feat/team-leadership)</span>
+                                        <span class="date">2019-2024</span>
+                                    </div>
+                                    <div class="commit-line achievement">
+                                        <span class="graph">| *</span>
+                                        <span class="hash">c5d7e92</span>
+                                        <span class="message">📱 Managed 5+ concurrent mobile projects</span>
+                                        <span class="branch">(feat/project-management)</span>
+                                        <span class="date">2018-2024</span>
+                                    </div>
+                                    <div class="commit-line">
+                                        <span class="graph">|/</span>
+                                    </div>
+                                    <div class="commit-line">
+                                        <span class="graph">*</span>
+                                        <span class="hash">3e7b5a1</span>
+                                        <span class="message">iOS Developer at LBPro Poland</span>
+                                        <span class="branch">(tag: foundation)</span>
+                                        <span class="date">2016-2017</span>
+                                    </div>
+                                    <div class="commit-line">
+                                        <span class="graph">|</span>
+                                    </div>
+                                    <div class="commit-line education">
+                                        <span class="graph">*</span>
+                                        <span class="hash">1a4d8c2</span>
+                                        <span class="message">🎓 Bachelor of Computer Science - Łodzi</span>
+                                        <span class="branch">(origin/education)</span>
+                                        <span class="date">2013-2017</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="terminal-line">
+                                    <span class="prompt">quang@career-journey:~$</span>
+                                    <span class="command">git branch -a</span>
+                                </div>
+                                <div class="branch-list">
+                                    <div class="branch-item current">* main</div>
+                                    <div class="branch-item">  feat/mobile-excellence</div>
+                                    <div class="branch-item">  feat/team-leadership</div>
+                                    <div class="branch-item">  feat/project-management</div>
+                                    <div class="branch-item remote">  remotes/origin/main</div>
+                                    <div class="branch-item remote">  remotes/origin/education</div>
+                                </div>
+                                
+                                <div class="terminal-line">
+                                    <span class="prompt">quang@career-journey:~$</span>
+                                    <span class="command">git show --stat HEAD</span>
+                                </div>
+                                <div class="commit-details">
+                                    <div class="commit-header">
+                                        <div>commit a7f3b21f8e9d2c5a4b7e1f6g3h8i9j0k1l2m3n4o</div>
+                                        <div>Author: Quang Tran Minh &lt;trmquang3103@gmail.com&gt;</div>
+                                        <div>Date: 2024-Present</div>
+                                        <div class="commit-message-detail">
+                                            <br/>
+                                            Senior iOS Developer at CBTW - Shahid Platform
+                                            <br/><br/>
+                                            • Developed iOS application for Shahid streaming platform
+                                            • Collaborated in international environment with 10-person team
+                                            • Contributed to architectural decisions for scalable solutions
+                                            • Excelled in remote collaboration and distributed workflows
+                                        </div>
+                                    </div>
+                                    <div class="file-stats">
+                                        <div> skills/swift.expertise           | ██████████ 100%</div>
+                                        <div> experience/streaming.platform   | ████████░░  80%</div>
+                                        <div> leadership/remote.collaboration  | ████████░░  85%</div>
+                                        <div> architecture/scalable.solutions | ███████░░░  75%</div>
+                                        <div class="stats-summary">4 files changed, 240 insertions(+), 15 deletions(-)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="terminal-line">
+                                    <span class="prompt">quang@career-journey:~$</span>
+                                    <span class="command typing-cursor">|</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Contact Content -->
                     <div class="file-content" id="contact-content">
                         <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
@@ -484,11 +624,109 @@
         </div>
     </div>
 
+    <!-- AI Assistant Widget -->
+    <div class="ai-assistant" id="aiAssistant">
+        <div class="ai-toggle" id="aiToggle">
+            <div class="ai-icon">🤖</div>
+            <div class="ai-pulse"></div>
+        </div>
+        
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span class="ai-avatar">🤖</span>
+                    <div>
+                        <div class="ai-name">CV Assistant</div>
+                        <div class="ai-status">Ask me about Quang's experience!</div>
+                    </div>
+                </div>
+                <button class="ai-close" id="aiClose">×</button>
+            </div>
+            
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message ai-message-bot">
+                    <div class="ai-message-content">
+                        Hi! I'm here to help you learn about Quang's experience. You can ask me questions like:
+                        <div class="ai-suggestions">
+                            <button class="ai-suggestion" data-question="What's his biggest achievement?">🏆 What's his biggest achievement?</button>
+                            <button class="ai-suggestion" data-question="How does he handle remote work?">🌍 How does he handle remote work?</button>
+                            <button class="ai-suggestion" data-question="What technologies does he love most?">⚡ What technologies does he love most?</button>
+                            <button class="ai-suggestion" data-question="Tell me about his leadership experience">👥 Tell me about his leadership experience</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-input-container">
+                <input type="text" class="ai-input" id="aiInput" placeholder="Ask me anything about Quang..." maxlength="200">
+                <button class="ai-send" id="aiSend">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Options Menu -->
+    <div class="download-menu" id="downloadMenu">
+        <div class="download-option" data-format="pdf-traditional">
+            <div class="download-icon">📄</div>
+            <div class="download-info">
+                <div class="download-title">Traditional PDF</div>
+                <div class="download-desc">Classic resume format</div>
+            </div>
+        </div>
+        <div class="download-option" data-format="pdf-modern">
+            <div class="download-icon">🎨</div>
+            <div class="download-info">
+                <div class="download-title">Modern PDF</div>
+                <div class="download-desc">Stylized with colors</div>
+            </div>
+        </div>
+        <div class="download-option" data-format="interactive">
+            <div class="download-icon">💻</div>
+            <div class="download-info">
+                <div class="download-title">Interactive Demo</div>
+                <div class="download-desc">Standalone HTML file</div>
+            </div>
+        </div>
+        <div class="download-option" data-format="json">
+            <div class="download-icon">📊</div>
+            <div class="download-info">
+                <div class="download-title">JSON Data</div>
+                <div class="download-desc">Structured data format</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Recommendations Panel -->
+    <div class="recommendations-panel" id="recommendationsPanel">
+        <div class="recommendations-header">
+            <div class="recommendations-title">
+                <span class="recommendations-icon">🧠</span>
+                Smart Recommendations
+            </div>
+            <button class="recommendations-close" id="recommendationsClose">×</button>
+        </div>
+        <div class="recommendations-content" id="recommendationsContent">
+            <div class="recommendation-item">
+                <div class="recommendation-role">Mobile Developer Role</div>
+                <div class="recommendation-text">Focus on iOS expertise and app development experience</div>
+                <div class="recommendation-sections">
+                    <span class="section-tag">TechnicalSkills.swift</span>
+                    <span class="section-tag">KeyProjects.swift</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/interactions.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/performance.js"></script>
+    <script src="js/advanced-features.js"></script>
 </body>
 
 </html>

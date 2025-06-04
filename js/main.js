@@ -202,6 +202,7 @@ class XcodeCV {
       'skills': { name: 'TechnicalSkills.swift', icon: '⚡' },
       'projects': { name: 'KeyProjects.swift', icon: '🚀' },
       'education': { name: 'Education.swift', icon: '🎓' },
+      'git-history': { name: 'CareerHistory.git', icon: '🌳' },
       'contact': { name: 'ContactInfo.swift', icon: '📞' }
     };
     
@@ -220,6 +221,7 @@ class XcodeCV {
       'skills': { type: 'Swift Source', lines: 28, size: '2.8 KB', class: 'TechnicalSkills' },
       'projects': { type: 'Swift Source', lines: 42, size: '4.1 KB', class: 'KeyProjects' },
       'education': { type: 'Swift Source', lines: 25, size: '2.5 KB', class: 'Education' },
+      'git-history': { type: 'Git Repository', lines: 48, size: '5.2 KB', class: 'CareerTimeline' },
       'contact': { type: 'Swift Source', lines: 30, size: '2.9 KB', class: 'ContactInfo' }
     };
     
