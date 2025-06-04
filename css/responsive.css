@@ -1,159 +1,156 @@
-/* Responsive Design */
+/* iPhone CV Responsive Design */
 
-/* Large tablets and small laptops */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 var(--spacing-lg);
-    }
-    
-    .expertise-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    
-    .achievements-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    
-    .hero-name {
-        font-size: clamp(2rem, 4vw, 3.5rem);
-    }
-    
-    .section-title {
-        font-size: 2.25rem;
+/* Larger screens - scale up iPhone */
+@media (min-width: 1400px) {
+    :root {
+        --iphone-width: 480px;
+        --iphone-height: 1040px;
+        --screen-width: 428px;
+        --screen-height: 926px;
     }
 }
 
-/* Tablets */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 var(--spacing-md);
+@media (min-width: 1200px) and (max-width: 1399px) {
+    :root {
+        --iphone-width: 450px;
+        --iphone-height: 975px;
+        --screen-width: 414px;
+        --screen-height: 896px;
+    }
+}
+
+/* Standard desktop screens */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    :root {
+        --iphone-width: 420px;
+        --iphone-height: 910px;
+        --screen-width: 390px;
+        --screen-height: 844px;
+    }
+}
+
+/* Tablet landscape */
+@media (max-width: 1023px) and (min-width: 768px) {
+    :root {
+        --iphone-width: 380px;
+        --iphone-height: 823px;
+        --screen-width: 375px;
+        --screen-height: 812px;
     }
     
-    .hero {
-        padding: var(--spacing-2xl) 0;
+    body {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Tablet portrait and mobile landscape */
+@media (max-width: 767px) {
+    :root {
+        --iphone-width: 340px;
+        --iphone-height: 737px;
+        --screen-width: 320px;
+        --screen-height: 693px;
     }
     
-    .contact-cards {
-        grid-template-columns: 1fr;
+    body {
+        padding: var(--spacing-md);
+        background: radial-gradient(ellipse at center, #1A0F08 0%, #000000 100%);
     }
     
-    .nav-content {
-        flex-wrap: wrap;
-        gap: var(--spacing-md);
-        justify-content: center;
+    .iphone-container {
+        transform: perspective(800px) rotateX(3deg) rotateY(-3deg);
     }
     
-    .nav-item {
-        font-size: 0.875rem;
-        padding: var(--spacing-xs) var(--spacing-sm);
-    }
-    
-    .expertise-grid,
-    .achievements-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .timeline {
-        padding-left: var(--spacing-lg);
-    }
-    
-    .timeline-marker {
-        left: -var(--spacing-lg);
-        width: 20px;
-        height: 20px;
-    }
-    
+    /* Adjust content for smaller iPhone */
     .section-title {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
     
-    .summary-section,
-    .expertise-section,
-    .experience-section,
-    .achievements-section,
-    .education-section {
-        padding: var(--spacing-2xl) 0;
+    .hero-name {
+        font-size: 1.6rem;
+    }
+    
+    .hero-title {
+        font-size: 0.9rem;
+    }
+    
+    .hero-description {
+        font-size: 0.8rem;
     }
 }
 
 /* Small mobile devices */
 @media (max-width: 480px) {
+    :root {
+        --iphone-width: 300px;
+        --iphone-height: 650px;
+        --screen-width: 280px;
+        --screen-height: 608px;
+    }
+    
+    body {
+        padding: var(--spacing-sm);
+        overflow: auto; /* Allow scrolling on very small screens */
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    .iphone-container {
+        transform: perspective(600px) rotateX(2deg) rotateY(-2deg);
+        animation: none; /* Disable float animation on small screens */
+    }
+    
+    /* Very compact content for tiny iPhone */
     .hero {
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-md) 0;
+    }
+    
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .avatar-inner {
+        font-size: 24px;
     }
     
     .hero-name {
-        font-size: 2.25rem;
-        margin-bottom: var(--spacing-xs);
+        font-size: 1.4rem;
     }
     
     .hero-title {
-        font-size: 1.125rem;
-        margin-bottom: var(--spacing-sm);
+        font-size: 0.8rem;
     }
     
     .hero-description {
-        font-size: 1rem;
-        margin-bottom: var(--spacing-xl);
-    }
-    
-    .contact-cards {
-        gap: var(--spacing-sm);
+        font-size: 0.75rem;
+        max-width: 250px;
     }
     
     .contact-card {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+    
+    .contact-icon {
+        font-size: 16px;
+    }
+    
+    .contact-label {
+        font-size: 0.7rem;
+    }
+    
+    .contact-value {
+        font-size: 0.75rem;
     }
     
     .section-title {
-        font-size: 1.75rem;
-        margin-bottom: var(--spacing-xl);
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-md);
     }
     
-    .job-title {
-        font-size: 1.25rem;
-    }
-    
-    .company-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
-    }
-    
-    .timeline {
-        padding-left: var(--spacing-md);
-    }
-    
-    .timeline-marker {
-        left: -var(--spacing-md);
-        width: 16px;
-        height: 16px;
-    }
-    
-    .timeline::before {
-        left: 8px;
-    }
-    
-    .summary-card,
-    .expertise-card,
-    .job-card,
-    .achievement-card,
-    .education-card {
-        padding: var(--spacing-lg);
-    }
-    
-    .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-sm);
-    }
-    
-    .experience-badge {
-        align-self: flex-end;
+    .nav-item {
+        font-size: 0.75rem;
+        padding: 4px 8px;
     }
 }
 

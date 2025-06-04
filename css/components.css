@@ -1,4 +1,4 @@
-/* Reusable Components */
+/* iOS Style Card Components */
 
 /* Card Components */
 .expertise-card,
@@ -6,25 +6,34 @@
 .achievement-card,
 .education-card,
 .summary-card {
-    background: var(--surface-white);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: var(--transition-normal);
+    padding: var(--spacing-lg);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all var(--transition-normal);
+    margin-bottom: var(--spacing-md);
 }
 
 .expertise-card:hover,
 .job-card:hover,
 .achievement-card:hover,
 .education-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .summary-card {
-    padding: var(--spacing-2xl);
-    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.12),
+        0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Card Headers */
@@ -37,34 +46,39 @@
 }
 
 .card-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .card-header h4 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
     flex: 1;
+    margin-bottom: 0;
 }
 
-/* Badges */
+/* iOS Badges */
 .experience-badge {
-    background: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
     padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.7rem;
     font-weight: var(--font-weight-semibold);
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .job-duration {
-    background: var(--light-gray);
+    background: rgba(142, 142, 147, 0.12);
     color: var(--text-secondary);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    border: 1px solid rgba(142, 142, 147, 0.2);
 }
 
 /* Skills */
@@ -87,23 +101,29 @@
 }
 
 .skill-tag {
-    background: var(--light-gray);
+    background: rgba(142, 142, 147, 0.12);
     color: var(--text-secondary);
     padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
     font-weight: var(--font-weight-medium);
-    transition: var(--transition-fast);
+    transition: all var(--transition-fast);
+    border: 1px solid rgba(142, 142, 147, 0.2);
+    cursor: pointer;
 }
 
 .skill-tag.featured {
-    background: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .skill-tag:hover {
-    background: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
 }
 
 /* Lists */
@@ -171,14 +191,15 @@
 }
 
 .stat-number {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: var(--font-weight-bold);
     color: var(--primary-blue);
     display: block;
+    text-shadow: 0 2px 4px rgba(0, 122, 255, 0.2);
 }
 
 .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: var(--font-weight-medium);
     margin-top: var(--spacing-xs);

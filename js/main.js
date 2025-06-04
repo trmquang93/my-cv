@@ -303,7 +303,89 @@ class PremiumCV {
 // Auto-initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.premiumCV = new PremiumCV();
+    
+    // Initialize iPhone scroll enhancements
+    initializeIPhoneScrolling();
 });
+
+// iPhone-specific scroll enhancements
+function initializeIPhoneScrolling() {
+    const scrollableContent = document.querySelector('.scrollable-content');
+    const statusBar = document.querySelector('.status-bar');
+    const navigation = document.querySelector('.nav-bar');
+    
+    if (!scrollableContent) return;
+    
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Enhanced scroll behavior
+    scrollableContent.addEventListener('scroll', (e) => {
+        if (!isScrolling) {
+            isScrolling = true;
+            document.body.classList.add('is-scrolling');
+        }
+        
+        // Clear timeout and set new one
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+            document.body.classList.remove('is-scrolling');
+        }, 150);
+        
+        // Parallax effect for status bar
+        const scrollY = scrollableContent.scrollTop;
+        const maxScroll = 100;
+        const opacity = Math.max(0.8, 1 - (scrollY / maxScroll) * 0.2);
+        
+        if (statusBar) {
+            statusBar.style.backgroundColor = `rgba(0, 0, 0, ${0.8 + (scrollY / maxScroll) * 0.2})`;
+        }
+        
+        // Navigation blur effect
+        if (navigation && scrollY > 50) {
+            navigation.classList.add('scrolled');
+        } else if (navigation) {
+            navigation.classList.remove('scrolled');
+        }
+    });
+    
+    // Haptic feedback simulation for iOS
+    const hapticElements = document.querySelectorAll('.contact-card, .skill-tag, .nav-item');
+    hapticElements.forEach(element => {
+        element.addEventListener('touchstart', () => {
+            element.style.transform = 'scale(0.98)';
+        }, { passive: true });
+        
+        element.addEventListener('touchend', () => {
+            element.style.transform = '';
+        }, { passive: true });
+        
+        element.addEventListener('touchcancel', () => {
+            element.style.transform = '';
+        }, { passive: true });
+    });
+    
+    // Smooth scroll reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe cards for scroll animations
+    const cards = document.querySelectorAll('.expertise-card, .job-card, .achievement-card, .education-card, .timeline-item');
+    cards.forEach(card => {
+        scrollObserver.observe(card);
+    });
+}
 
 // Add CSS for ripple effect and other dynamic styles
 const dynamicStyles = document.createElement('style');
@@ -313,6 +395,48 @@ dynamicStyles.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+    
+    /* Enhanced Scroll Styles */
+    .is-scrolling .iphone-frame {
+        box-shadow: var(--shadow-iphone), 0 0 60px rgba(0, 122, 255, 0.2);
+    }
+    
+    .nav-bar.scrolled {
+        background: rgba(242, 242, 247, 0.98);
+        backdrop-filter: blur(30px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+        position: absolute;
+        right: 2px;
+        top: 60px;
+        bottom: 60px;
+        width: 2px;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 1px;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .scroll-indicator::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+        border-radius: 1px;
+        transform: translateY(0);
+        transition: transform 0.1s ease-out;
+    }
+    
+    .is-scrolling .scroll-indicator {
+        opacity: 1;
     }
     
     .initialization-error .error-content {
@@ -345,6 +469,7 @@ dynamicStyles.textContent = `
     .skill-selected {
         background: #007AFF !important;
         color: white !important;
+        transform: scale(1.1) !important;
     }
     
     .copy-feedback {
@@ -354,6 +479,24 @@ dynamicStyles.textContent = `
     @keyframes fadeInOut {
         0%, 100% { opacity: 0; transform: translateY(10px); }
         10%, 90% { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Enhanced Haptic Feedback */
+    .haptic-feedback:active {
+        transform: scale(0.95);
+        transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Card Hover Effects */
+    .expertise-card:hover,
+    .job-card:hover,
+    .achievement-card:hover,
+    .education-card:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 
+            0 12px 32px rgba(0, 0, 0, 0.15),
+            0 6px 16px rgba(0, 0, 0, 0.12),
+            0 0 0 1px rgba(255, 255, 255, 0.5);
     }
 `;
 

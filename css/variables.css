@@ -1,7 +1,17 @@
-/* CSS Custom Properties (Variables) */
+/* Premium iPhone CV Variables */
 
 :root {
-    /* Apple Color Palette */
+    /* iPhone Frame Dimensions */
+    --iphone-width: 393px;
+    --iphone-height: 852px;
+    --iphone-border-radius: 47px;
+    --iphone-border-width: 8px;
+    --screen-width: 375px;
+    --screen-height: 812px;
+    --notch-width: 154px;
+    --notch-height: 30px;
+    
+    /* Premium Color Palette */
     --primary-blue: #007AFF;
     --primary-blue-dark: #0056CC;
     --secondary-blue: #5AC8FA;
@@ -13,6 +23,14 @@
     --text-secondary: #6D6D80;
     --text-tertiary: #8E8E93;
     
+    /* iPhone Specific Colors */
+    --iphone-frame: linear-gradient(135deg, #C9B037 0%, #F4E96B 25%, #C9B037 50%, #FFD700 75%, #C9B037 100%);
+    --iphone-screen-bg: #000000;
+    --status-bar-bg: rgba(0, 0, 0, 0.8);
+    --nav-bar-bg: rgba(242, 242, 247, 0.94);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    
     /* Apple Typography */
     --font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-weight-light: 300;
@@ -21,7 +39,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     
-    /* Spacing System */
+    /* iOS Spacing System */
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
@@ -30,20 +48,53 @@
     --spacing-2xl: 48px;
     --spacing-3xl: 64px;
     
-    /* Border Radius */
+    /* iOS Border Radius */
+    --radius-xs: 4px;
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
+    --radius-2xl: 32px;
     
-    /* Shadows */
+    /* Premium Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-iphone: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 15px 30px -15px rgba(0, 0, 0, 0.3);
     
-    /* Transitions */
-    --transition-fast: 0.15s ease-out;
-    --transition-normal: 0.3s ease-out;
-    --transition-slow: 0.5s ease-out;
+    /* Cinematic Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Glassmorphism */
+    --glass-backdrop: blur(20px);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-dark: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
+/* iPhone Specific Media Queries */
+@media (max-width: 480px) {
+    :root {
+        --iphone-width: 320px;
+        --iphone-height: 693px;
+        --screen-width: 304px;
+        --screen-height: 659px;
+    }
+}
+
+@media (min-width: 1200px) {
+    :root {
+        --iphone-width: 450px;
+        --iphone-height: 975px;
+        --screen-width: 428px;
+        --screen-height: 926px;
+    }
 }

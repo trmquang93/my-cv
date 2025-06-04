@@ -1,10 +1,10 @@
-/* Section-specific Styles */
+/* iOS Section Styles */
 
 /* Summary Section */
 .summary-content p {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin-bottom: var(--spacing-lg);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
     color: var(--text-secondary);
 }
 
@@ -15,46 +15,47 @@
 
 /* Expertise Section */
 .expertise-section {
-    background: var(--light-gray);
+    background: transparent;
 }
 
 .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 /* Experience Section */
 .timeline {
     position: relative;
-    padding-left: var(--spacing-xl);
+    padding-left: var(--spacing-lg);
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 12px;
+    left: 8px;
     top: 0;
     bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+    border-radius: 1px;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .timeline-marker {
     position: absolute;
-    left: -var(--spacing-xl);
-    top: var(--spacing-lg);
-    width: 24px;
-    height: 24px;
+    left: -var(--spacing-lg);
+    top: var(--spacing-md);
+    width: 16px;
+    height: 16px;
     background: var(--primary-blue);
-    border: 4px solid var(--surface-white);
+    border: 3px solid var(--surface-white);
     border-radius: 50%;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
     z-index: 2;
 }
 
@@ -63,7 +64,7 @@
 }
 
 .job-title {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: var(--font-weight-semibold);
     color: var(--primary-blue);
     margin-bottom: var(--spacing-xs);
@@ -74,11 +75,11 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
 }
 
 .company-name {
-    font-size: 1.125rem;
+    font-size: 0.9rem;
     font-weight: var(--font-weight-medium);
     color: var(--text-secondary);
 }
@@ -96,13 +97,13 @@
 
 /* Achievements Section */
 .achievements-section {
-    background: var(--light-gray);
+    background: transparent;
 }
 
 .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 .achievement-card {
@@ -110,16 +111,16 @@
 }
 
 .achievement-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-lg);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
     display: block;
 }
 
 .achievement-card h4 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .achievement-card ul {
@@ -138,23 +139,23 @@
 
 /* Education Section */
 .education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 .education-icon {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-lg);
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
     display: block;
 }
 
 .education-card h4 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: var(--font-weight-semibold);
     color: var(--primary-blue);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .education-details {
@@ -191,8 +192,8 @@
 
 .availability-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
 }
 
 .availability-item {

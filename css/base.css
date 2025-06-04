@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Premium iPhone CV Base Styles */
 
 * {
     margin: 0;
@@ -8,34 +8,215 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
     font-size: 16px;
 }
 
 body {
     font-family: var(--font-family);
-    font-weight: var(--font-weight-regular);
     line-height: 1.6;
     color: var(--text-primary);
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #2C1810 0%, #1A0F08 50%, #000000 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.page-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: var(--surface-white);
-    box-shadow: var(--shadow-xl);
-    border-radius: var(--radius-xl);
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
-.container {
-    max-width: 1000px;
+/* Enhanced Background Effects */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 40% 60%, rgba(120, 219, 226, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 60% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+    animation: backgroundShift 25s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Floating Particles */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particleFloat 30s linear infinite;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-20px) rotate(360deg); }
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* iPhone Container */
+.iphone-container {
+    position: relative;
+    width: var(--iphone-width);
+    height: var(--iphone-height);
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+    animation: iphoneFloat 6s ease-in-out infinite;
+}
+
+@keyframes iphoneFloat {
+    0%, 100% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(0px); }
+    50% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px); }
+}
+
+/* iPhone Frame */
+.iphone-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--iphone-frame);
+    border-radius: var(--iphone-border-radius);
+    padding: var(--iphone-border-width);
+    box-shadow: var(--shadow-iphone);
+    
+    /* Realistic iPhone frame effects */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.iphone-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.1) 100%);
+    border-radius: calc(var(--iphone-border-radius) + 2px);
+    z-index: -1;
+}
+
+/* iPhone Screen */
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background: var(--iphone-screen-bg);
+    border-radius: calc(var(--iphone-border-radius) - var(--iphone-border-width));
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* iPhone Notch */
+.iphone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--notch-width);
+    height: var(--notch-height);
+    background: var(--iphone-screen-bg);
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+    
+    /* Notch shadow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Bar */
+.status-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: var(--status-bar-bg);
+    backdrop-filter: var(--glass-backdrop);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 5;
+    color: white;
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.status-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* App Content Container */
+.app-content {
+    flex: 1;
+    margin-top: 44px;
+    position: relative;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow: hidden; /* Ensure content stays within bounds */
+}
+
+/* Scrollable Content */
+.scrollable-content {
+    height: calc(var(--screen-height) - 44px); /* Fixed height accounting for status bar */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    
+    /* Custom scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Page Wrapper inside iPhone */
+.page-wrapper {
+    min-height: 100%; /* Allow content to be longer than screen */
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    padding-bottom: var(--spacing-xl); /* Add bottom padding for scrolling */
+}
+
+.container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 var(--spacing-md);
 }
 
 /* Section styles */
@@ -44,16 +225,29 @@ body {
 .experience-section,
 .achievements-section,
 .education-section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-xl) 0;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
     letter-spacing: -0.02em;
+}
+
+/* iPhone Home Indicator */
+.home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    z-index: 10;
 }
 
 /* Accessibility helpers */

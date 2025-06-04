@@ -1,47 +1,58 @@
-/* Navigation Styles */
+/* iOS Navigation Styles */
 
 .nav-bar {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(242, 242, 247, 0.94);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     position: sticky;
-    top: 0;
+    top: 44px; /* Account for status bar */
     z-index: 100;
     transition: var(--transition-normal);
+    border-radius: 0;
 }
 
 .nav-content {
     display: flex;
-    justify-content: center;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-md) var(--spacing-lg);
-    max-width: 1000px;
-    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    overflow-x: auto;
+    gap: var(--spacing-xs);
+    
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.nav-content::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-item {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-sm);
-    transition: var(--transition-fast);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
     position: relative;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    min-width: fit-content;
+    flex-shrink: 0;
 }
 
-.nav-item:hover,
-.nav-item.active {
+.nav-item:hover {
     color: var(--primary-blue);
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.nav-item.active {
+    color: white;
+    background: var(--primary-blue);
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
 }
 
 .nav-item.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: var(--primary-blue);
-    border-radius: 1px;
+    display: none; /* Remove underline for iOS style */
 }
