@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quang Tran Minh - CV</title>
+    <style>
+        @page {
+            margin: 0.8in;
+            size: A4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95em;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #2c5aa0;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin-bottom: 20px;
+        }
+        
+        .subsection-title {
+            font-size: 1.1em;
+            color: #444;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c5aa0;
+        }
+        
+        .company {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .duration {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .job-content {
+            margin-left: 0;
+        }
+        
+        .job-subsection {
+            margin-bottom: 15px;
+        }
+        
+        .job-subsection h4 {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: #2c5aa0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .tech-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2c5aa0;
+        }
+        
+        .tech-category h4 {
+            color: #2c5aa0;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .skills-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .skills-list li {
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .skills-list li:before {
+            content: "▪";
+            color: #2c5aa0;
+            position: absolute;
+            left: 0;
+        }
+        
+        .summary-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2c5aa0;
+            margin-bottom: 25px;
+        }
+        
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .key-point {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .key-point h4 {
+            color: #2c5aa0;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        @media print {
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .job-header {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quang Tran Minh</h1>
+            <h2>Mobile Technical Leader & Product Management Expert</h2>
+            <div class="contact-info">
+                <span>📧 trmquang3103@gmail.com</span>
+                <span>📱 84-969-993-103</span>
+                <span>🌐 LinkedIn</span>
+                <span>💻 GitHub</span>
+                <span>📍 Hanoi, Vietnam</span>
+                <span>🕒 Flexible working hours</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="summary-box">
+                <p><strong>Experienced Mobile Technical Leader with 10+ years of comprehensive mobile development expertise and proven product management capabilities.</strong> Successfully led cross-functional teams in delivering complex mobile ecosystems and super applications with 500K+ combined downloads. <strong>Specialized in architecting secure, scalable mobile solutions with deep expertise in product strategy, technical leadership, and business-driven development.</strong> Expert in Apple's entire ecosystem and AI-powered applications with proven track record in <strong>managing multiple concurrent projects and driving product decisions from conception to market success.</strong></p>
+                
+                <p style="margin-top: 10px;">Fluent in English with extensive experience leading international teams and delivering enterprise-grade applications for large-scale user bases.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Core Technical Expertise</h3>
+            
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>Mobile Development & Architecture (10+ Years)</h4>
+                    <ul class="skills-list">
+                        <li><strong>Languages:</strong> Swift, Objective-C, C/C++, JavaScript</li>
+                        <li><strong>Modern iOS:</strong> SwiftUI, Swift Concurrency, Combine</li>
+                        <li><strong>Architecture:</strong> MVVM, MVP, VIPER, Clean Architecture, Microservices</li>
+                        <li><strong>Security:</strong> iOS Security Framework, Data Encryption, Secure Networking</li>
+                        <li><strong>Testing:</strong> XCTest, XCUITest, Security Testing, Performance Optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-category">
+                    <h4>AI/ML & Advanced Technologies</h4>
+                    <ul class="skills-list">
+                        <li><strong>Apple Intelligence:</strong> Vision Framework, Core ML, NLP</li>
+                        <li><strong>Security Features:</strong> Biometric Authentication, Fraud Detection</li>
+                        <li><strong>Image Processing:</strong> Core Image, Metal Performance Shaders</li>
+                        <li><strong>Cross-Platform:</strong> Flutter with native iOS bridging</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-category">
+                    <h4>Product Management & Leadership</h4>
+                    <ul class="skills-list">
+                        <li><strong>Product Strategy:</strong> Market Analysis, Roadmap Planning, Feature Prioritization</li>
+                        <li><strong>Project Management:</strong> Multi-project coordination, Resource allocation</li>
+                        <li><strong>Stakeholder Management:</strong> Cross-functional team leadership, Executive reporting</li>
+                        <li><strong>Business Analysis:</strong> User Experience Strategy, Business-Technical alignment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Professional Experience</h3>
+            
+            <div class="subsection">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Product Manager & Senior iOS Developer</div>
+                        <div class="company">Unit Vietnam</div>
+                    </div>
+                    <div class="duration">7 years</div>
+                </div>
+                
+                <div class="job-content">
+                    <div class="job-subsection">
+                        <h4>Leadership & Product Management:</h4>
+                        <ul>
+                            <li><span class="highlight">Managed 5+ concurrent mobile projects</span> simultaneously, delivering products across different market segments</li>
+                            <li><span class="highlight">Led product strategy development</span> for multiple iOS applications, from market research to post-launch optimization</li>
+                            <li><span class="highlight">Coordinated cross-functional teams</span> of 20+ developers, designers, QA, and business stakeholders</li>
+                            <li><span class="highlight">Drove product roadmap decisions</span> balancing technical feasibility with business objectives and user needs</li>
+                            <li><span class="highlight">Managed stakeholder relationships</span> with executives, clients, and international partners</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-subsection">
+                        <h4>Technical Leadership Achievements:</h4>
+                        <ul>
+                            <li>Successfully delivered <span class="highlight">10+ iOS applications with 4.5+ App Store ratings</span></li>
+                            <li><span class="highlight">Architected secure solutions</span> handling 100K+ concurrent users with <0.5% crash rates</li>
+                            <li><span class="highlight">Led technical decision-making</span> for architecture choices, technology stack, and security implementations</li>
+                            <li><span class="highlight">Established development best practices</span> including coding standards, security protocols, and code review processes</li>
+                            <li><span class="highlight">Mentored technical teams</span> and conducted technical interviews for senior positions</li>
+                            <li><span class="highlight">Spearheaded migration</span> from legacy Objective-C to modern Swift architecture across multiple projects</li>
+                            <li><span class="highlight">Implemented AI-driven security features</span> including fraud detection and user behavior analysis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-subsection">
+                        <h4>Project Management Excellence:</h4>
+                        <ul>
+                            <li><span class="highlight">Coordinated multiple product launches</span> with tight deadlines and complex technical requirements</li>
+                            <li><span class="highlight">Managed resource allocation</span> across concurrent projects while maintaining quality standards</li>
+                            <li><span class="highlight">Implemented agile methodologies</span> adapted for large-scale team coordination</li>
+                            <li><span class="highlight">Delivered projects on time and within budget</span> with measurable business impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Senior iOS Developer</div>
+                        <div class="company">CBTW</div>
+                    </div>
+                    <div class="duration">2+ years</div>
+                </div>
+                
+                <div class="job-content">
+                    <ul>
+                        <li>Develop iOS application for <span class="highlight">Shahid streaming platform</span> serving millions of users across the Middle East</li>
+                        <li><span class="highlight">Collaborate in international environment</span> with 10-person iOS team ensuring enterprise-grade quality</li>
+                        <li><span class="highlight">Contribute to architectural decisions</span> for scalable streaming solutions handling high-traffic loads</li>
+                        <li>Work with <span class="highlight">cross-functional teams</span> (backend, QA, product, design) to deliver seamless user experiences</li>
+                        <li>Excel in <span class="highlight">remote collaboration</span> with asynchronous communication and distributed workflows</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">iOS Developer</div>
+                        <div class="company">LBPro Poland</div>
+                    </div>
+                    <div class="duration">1+ years</div>
+                </div>
+                
+                <div class="job-content">
+                    <ul>
+                        <li>Developed and maintained multiple iOS applications from <span class="highlight">concept to App Store release</span></li>
+                        <li>Collaborated with <span class="highlight">cross-functional teams</span> including backend, design, and product management</li>
+                        <li>Implemented <span class="highlight">security features</span> including push notifications, location services, and background processing</li>
+                        <li>Contributed to <span class="highlight">open-source iOS libraries</span> and frameworks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Key Differentiators</h3>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <h4>Leadership Excellence</h4>
+                    <ul>
+                        <li><strong>Multi-project management</strong> with proven ability to prioritize and deliver concurrent initiatives</li>
+                        <li><strong>Technical-business bridge</strong> with ability to translate complex technical concepts to stakeholders</li>
+                        <li><strong>Team mentorship</strong> and development of junior to senior developers</li>
+                    </ul>
+                </div>
+                
+                <div class="key-point">
+                    <h4>Product-Driven Approach</h4>
+                    <ul>
+                        <li><strong>User-centric development</strong> with deep understanding of market needs and user experience</li>
+                        <li><strong>Data-driven decision making</strong> using analytics and user feedback for product improvements</li>
+                        <li><strong>Business strategy alignment</strong> ensuring technical solutions support overall business objectives</li>
+                    </ul>
+                </div>
+                
+                <div class="key-point">
+                    <h4>Security & Scale Expertise</h4>
+                    <ul>
+                        <li><strong>Enterprise-grade security</strong> implementation for high-traffic applications</li>
+                        <li><strong>Performance optimization</strong> for applications handling 100K+ concurrent users</li>
+                        <li><strong>Scalable architecture</strong> design for future growth and feature expansion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Education & Remote Work Excellence</h3>
+            
+            <div class="subsection">
+                <div class="subsection-title">Education</div>
+                <p><strong>Bachelor of Computer Science</strong><br>
+                <em>Wyższa Szkoła Informatyki w Łodzi</em><br>
+                Engineer, Information Technology • 2013-2017</p>
+                
+                <p style="margin-top: 10px;"><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Software Engineering, Mobile App Development, Computer Networks, Project Management, Business Analysis</p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Remote Work & International Collaboration</div>
+                <ul>
+                    <li><strong>3+ years remote development experience</strong> with proven track record</li>
+                    <li><strong>Fluent English</strong> with extensive international stakeholder management</li>
+                    <li><strong>Expert in asynchronous communication</strong> tools and distributed team coordination</li>
+                    <li><strong>Cross-cultural collaboration</strong> experience with teams across different time zones</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Availability</h3>
+            <ul>
+                <li><strong>Start Date:</strong> Immediate</li>
+                <li><strong>Work Schedule:</strong> Full-time, flexible hours</li>
+                <li><strong>Location:</strong> Hanoi, Vietnam (Open to hybrid/remote arrangements)</li>
+                <li><strong>Languages:</strong> Native Vietnamese, Fluent English</li>
+            </ul>
+            
+            <p style="margin-top: 15px; text-align: center; font-style: italic;">
+                <em>References and detailed project portfolio available upon request</em>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
