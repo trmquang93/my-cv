@@ -1,269 +1,331 @@
-/* iPhone CV Responsive Design */
+/* Responsive Design for Xcode CV */
 
-/* Larger screens - scale up iPhone with Figma proportions */
-@media (min-width: 1400px) {
-    :root {
-        --iphone-width: 400px;
-        --iphone-height: 820px;
-        --screen-width: 360px;
-        --screen-height: 760px;
-    }
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+  }
+  
+  .inspector {
+    width: 200px;
+    min-width: 200px;
+  }
+  
+  .code-block {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-md);
+  }
+  
+  .window-title .project-name {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
-@media (min-width: 1200px) and (max-width: 1399px) {
-    :root {
-        --iphone-width: 390px;
-        --iphone-height: 800px;
-        --screen-width: 350px;
-        --screen-height: 740px;
-    }
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  .sidebar {
+    width: 180px;
+    min-width: 180px;
+  }
+  
+  .inspector {
+    width: 160px;
+    min-width: 160px;
+  }
+  
+  .bottom-panel {
+    height: 80px;
+  }
+  
+  .xcode-container {
+    height: calc(100vh - 28px - 80px);
+  }
 }
 
-/* Standard desktop screens */
-@media (min-width: 1024px) and (max-width: 1199px) {
-    :root {
-        --iphone-width: 380px;
-        --iphone-height: 780px;
-        --screen-width: 340px;
-        --screen-height: 720px;
-    }
+/* Mobile Portrait */
+@media (max-width: 768px) {
+  .xcode-container {
+    flex-direction: column;
+    height: calc(100vh - 28px - 60px);
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    min-width: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-primary);
+  }
+  
+  .editor-container {
+    height: 60%;
+  }
+  
+  .inspector {
+    display: none;
+  }
+  
+  .bottom-panel {
+    height: 60px;
+  }
+  
+  .console-content {
+    padding: var(--spacing-xs);
+  }
+  
+  .console-line {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .timestamp {
+    align-self: flex-start;
+  }
+  
+  /* Mobile Navigation */
+  .navigator-tabs {
+    justify-content: space-around;
+  }
+  
+  .nav-tab {
+    flex: 1;
+    text-align: center;
+  }
+  
+  /* Mobile Tab Bar */
+  .tab {
+    min-width: 120px;
+    padding: var(--spacing-sm);
+  }
+  
+  .tab-name {
+    max-width: 80px;
+  }
+  
+  /* Mobile File Tree */
+  .file-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .file-name {
+    font-size: var(--font-size-md);
+  }
+  
+  /* Mobile Code Editor */
+  .line-numbers {
+    width: 40px;
+    padding: var(--spacing-md) var(--spacing-xs);
+  }
+  
+  .code-block {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-md);
+    line-height: 1.5;
+  }
 }
 
-/* Tablet landscape */
-@media (max-width: 1023px) and (min-width: 768px) {
-    :root {
-        --iphone-width: 406px;
-        --iphone-height: 835px;
-        --screen-width: 361px;
-        --screen-height: 790px;
-    }
-    
-    body {
-        padding: var(--spacing-lg);
-    }
-}
-
-/* Tablet portrait and mobile landscape */
-@media (max-width: 767px) {
-    :root {
-        --iphone-width: 340px;
-        --iphone-height: 737px;
-        --screen-width: 320px;
-        --screen-height: 693px;
-    }
-    
-    body {
-        padding: var(--spacing-md);
-        background: radial-gradient(ellipse at center, #1A0F08 0%, #000000 100%);
-    }
-    
-    .iphone-container {
-        transform: perspective(800px) rotateX(3deg) rotateY(-3deg);
-    }
-    
-    /* Adjust content for smaller iPhone */
-    .section-title {
-        font-size: 1.3rem;
-    }
-    
-    .hero-name {
-        font-size: 1.6rem;
-    }
-    
-    .hero-title {
-        font-size: 0.9rem;
-    }
-    
-    .hero-description {
-        font-size: 0.8rem;
-    }
-}
-
-/* Small mobile devices */
+/* Small Mobile */
 @media (max-width: 480px) {
-    :root {
-        --iphone-width: 300px;
-        --iphone-height: 650px;
-        --screen-width: 280px;
-        --screen-height: 608px;
-    }
-    
-    body {
-        padding: var(--spacing-sm);
-        overflow: auto; /* Allow scrolling on very small screens */
-        align-items: flex-start;
-        padding-top: 20px;
-    }
-    
-    .iphone-container {
-        transform: perspective(600px) rotateX(2deg) rotateY(-2deg);
-        animation: none; /* Disable float animation on small screens */
-    }
-    
-    /* Very compact content for tiny iPhone */
-    .hero {
-        padding: var(--spacing-md) 0;
-    }
-    
-    .profile-avatar {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .avatar-inner {
-        font-size: 24px;
-    }
-    
-    .hero-name {
-        font-size: 1.4rem;
-    }
-    
-    .hero-title {
-        font-size: 0.8rem;
-    }
-    
-    .hero-description {
-        font-size: 0.75rem;
-        max-width: 250px;
-    }
-    
-    .contact-card {
-        padding: var(--spacing-sm);
-    }
-    
-    .contact-icon {
-        font-size: 16px;
-    }
-    
-    .contact-label {
-        font-size: 0.7rem;
-    }
-    
-    .contact-value {
-        font-size: 0.75rem;
-    }
-    
-    .section-title {
-        font-size: 1.1rem;
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .nav-item {
-        font-size: 0.75rem;
-        padding: 4px 8px;
-    }
+  .window-chrome {
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .traffic-lights {
+    gap: var(--spacing-xs);
+  }
+  
+  .traffic-light {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .window-title {
+    font-size: var(--font-size-xs);
+  }
+  
+  .sidebar {
+    height: 50%;
+  }
+  
+  .editor-container {
+    height: 50%;
+  }
+  
+  .navigator-header,
+  .console-header {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .navigator-header h3,
+  .console-title {
+    font-size: var(--font-size-xs);
+  }
+  
+  .code-block {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm);
+  }
+  
+  .line-numbers {
+    width: 35px;
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Simplified Tab Bar for Small Screens */
+  .tab {
+    min-width: 100px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .tab-icon {
+    display: none;
+  }
+  
+  .tab-name {
+    max-width: 60px;
+    font-size: var(--font-size-xs);
+  }
 }
 
-/* Extra small devices */
-@media (max-width: 360px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .hero-name {
-        font-size: 2rem;
-    }
-    
-    .hero-title {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .contact-card {
-        padding: var(--spacing-sm);
-    }
-    
-    .contact-icon {
-        font-size: 20px;
-    }
-    
-    .summary-card,
-    .expertise-card,
-    .job-card,
-    .achievement-card,
-    .education-card {
-        padding: var(--spacing-md);
-    }
-    
-    .nav-item {
-        font-size: 0.75rem;
-        padding: var(--spacing-xs);
-    }
-    
-    .skill-tag {
-        font-size: 0.75rem;
-        padding: 2px 6px;
-    }
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .file-item,
+  .tab,
+  .nav-tab,
+  .inspector-tab,
+  .console-btn {
+    min-height: 44px;
+    padding: var(--spacing-sm);
+  }
+  
+  .traffic-light {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .control-btn {
+    min-height: 32px;
+    min-width: 32px;
+  }
+  
+  /* Increase touch targets */
+  .tab-close {
+    min-width: 24px;
+    min-height: 24px;
+  }
+  
+  /* Better scrolling on touch devices */
+  .navigator-content,
+  .inspector-content,
+  .console-content,
+  .code-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Landscape Phone Specific */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 414px) {
+  .window-chrome {
+    height: 24px;
+  }
+  
+  .xcode-container {
+    height: calc(100vh - 24px - 50px);
+  }
+  
+  .bottom-panel {
+    height: 50px;
+  }
+  
+  .sidebar {
+    width: 25%;
+    min-width: 160px;
+  }
+  
+  .editor-container {
+    width: 75%;
+  }
+  
+  .inspector {
+    display: none;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .traffic-light,
+  .file-icon,
+  .folder-icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .file-item,
+  .tab,
+  .nav-tab,
+  .inspector-tab,
+  .control-btn,
+  .console-btn {
+    transition: none;
+  }
+  
+  .code-content {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark Mode Specific Responsive Adjustments */
+@media (prefers-color-scheme: dark) {
+  .sidebar,
+  .inspector,
+  .bottom-panel {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* Print Styles */
 @media print {
-    .page-wrapper {
-        max-width: none;
-        box-shadow: none;
-        border-radius: 0;
-    }
-    
-    .nav-bar {
-        display: none;
-    }
-    
-    .hero {
-        background: var(--primary-blue) !important;
-        -webkit-print-color-adjust: exact;
-    }
-    
-    .section-title,
-    .job-title,
-    .card-header h4 {
-        color: var(--primary-blue) !important;
-        -webkit-print-color-adjust: exact;
-    }
-    
-    .expertise-section,
-    .achievements-section {
-        background: var(--light-gray) !important;
-        -webkit-print-color-adjust: exact;
-    }
-    
-    .timeline-item {
-        page-break-inside: avoid;
-    }
-    
-    .job-card,
-    .expertise-card,
-    .achievement-card,
-    .education-card {
-        page-break-inside: avoid;
-    }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Focus States */
-.nav-item:focus,
-.contact-card:focus {
-    outline: 2px solid var(--primary-blue);
-    outline-offset: 2px;
-}
-
-/* High Contrast Mode */
-@media (prefers-contrast: high) {
-    :root {
-        --text-secondary: #000000;
-        --text-tertiary: #000000;
-    }
+  .window-chrome,
+  .sidebar,
+  .inspector,
+  .bottom-panel,
+  .tab-bar {
+    display: none;
+  }
+  
+  .xcode-container {
+    height: auto;
+    flex-direction: column;
+  }
+  
+  .editor-container {
+    width: 100%;
+    height: auto;
+  }
+  
+  .code-editor {
+    height: auto;
+  }
+  
+  .code-content {
+    height: auto;
+    overflow: visible;
+  }
+  
+  .file-content {
+    display: block !important;
+    page-break-inside: avoid;
+  }
+  
+  .code-block {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
 }

@@ -1,509 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quang Tran Minh - Mobile Technical Leader & Product Management Expert with 10+ years of iOS development experience">
-    <meta name="keywords" content="iOS Developer, Mobile Technical Leader, Product Manager, Swift, SwiftUI, Apple Technologies">
-    <meta name="author" content="Quang Tran Minh">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quangtranminh.dev/">
-    <meta property="og:title" content="Quang Tran Minh - Mobile Technical Leader">
-    <meta property="og:description" content="10+ years crafting exceptional mobile experiences with Apple's design philosophy">
-    <meta property="og:image" content="https://quangtranminh.dev/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://quangtranminh.dev/">
-    <meta property="twitter:title" content="Quang Tran Minh - Mobile Technical Leader">
-    <meta property="twitter:description" content="10+ years crafting exceptional mobile experiences with Apple's design philosophy">
-    <meta property="twitter:image" content="https://quangtranminh.dev/og-image.jpg">
-    
-    <title>Quang Tran Minh - Mobile Technical Leader & Product Manager</title>
-    
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/variables.css">
+    <title>Quang Tran Minh - CV | Xcode Style</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/sections.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- Preconnect to external domains -->
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Quang Tran Minh",
-        "jobTitle": "Mobile Technical Leader & Product Management Expert",
-        "email": "trmquang3103@gmail.com",
-        "telephone": "+84-969-993-103",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Hanoi",
-            "addressCountry": "Vietnam"
-        },
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Unit Vietnam"
-        },
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Wyższa Szkoła Informatyki w Łodzi"
-        },
-        "knowsAbout": ["iOS Development", "Swift", "SwiftUI", "Product Management", "Mobile Architecture", "AI/ML"]
-    }
-    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=SF+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <!-- iPhone Container -->
-    <div class="iphone-container">
-        <!-- iPhone Screen -->
-        <div class="iphone-screen">
-                <!-- iPhone Notch -->
-                <div class="iphone-notch"></div>
-                
-                <!-- Status Bar -->
-                <div class="status-bar">
-                    <div class="status-left">
-                        <span style="font-weight: 600;">9:41</span>
-                    </div>
-                    <div class="status-right">
-                        <span style="display: flex; align-items: center; gap: 4px;">
-                            <svg width="18" height="12" viewBox="0 0 18 12" fill="white">
-                                <path d="M1 4.5h2v3H1v-3zm4-1.5h2v6H5V3zm4-1.5h2v9H9v-9zm4 3h2v3h-2v-3z" opacity="0.8"/>
-                            </svg>
-                            <svg width="15" height="11" viewBox="0 0 15 11" fill="white">
-                                <path d="M1 5.5c0-2.5 2-4.5 4.5-4.5S10 3 10 5.5 8 10 5.5 10 1 8 1 5.5z" opacity="0.8"/>
-                            </svg>
-                            <svg width="27" height="13" viewBox="0 0 27 13" fill="white">
-                                <rect x="2" y="3" width="20" height="7" rx="2" opacity="0.35"/>
-                                <rect x="3" y="4" width="18" height="5" rx="1" fill="white"/>
-                                <rect x="23" y="5" width="2" height="3" rx="1" opacity="0.4"/>
-                            </svg>
-                        </span>
+    <!-- Window Chrome -->
+    <div class="window-chrome">
+        <div class="traffic-lights">
+            <div class="traffic-light close"></div>
+            <div class="traffic-light minimize"></div>
+            <div class="traffic-light maximize"></div>
+        </div>
+        <div class="window-title">
+            <span class="project-name">Quang_Tran_Minh.xcworkspace</span>
+        </div>
+        <div class="window-controls">
+            <button class="control-btn" id="themeToggle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 18c-.89 0-1.74-.19-2.5-.54C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.46C10.26 6.19 11.11 6 12 6a6 6 0 0 1 0 12z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="xcode-container">
+        <!-- Sidebar Navigator -->
+        <div class="sidebar">
+            <div class="navigator-header">
+                <h3>Navigator</h3>
+                <div class="navigator-tabs">
+                    <button class="nav-tab active" data-tab="project">📁</button>
+                    <button class="nav-tab" data-tab="search">🔍</button>
+                    <button class="nav-tab" data-tab="issues">⚠️</button>
+                </div>
+            </div>
+
+            <div class="navigator-content">
+                <!-- Project Navigator -->
+                <div class="nav-panel active" id="project-nav">
+                    <div class="file-tree">
+                        <div class="folder-item expanded">
+                            <span class="folder-icon">📁</span>
+                            <span class="folder-name">QuangTranMinh_CV</span>
+                            <div class="folder-contents">
+                                <div class="file-item active" data-file="personal-info">
+                                    <span class="file-icon">👤</span>
+                                    <span class="file-name">PersonalInfo.swift</span>
+                                </div>
+                                <div class="file-item" data-file="experience">
+                                    <span class="file-icon">💼</span>
+                                    <span class="file-name">WorkExperience.swift</span>
+                                </div>
+                                <div class="file-item" data-file="skills">
+                                    <span class="file-icon">⚡</span>
+                                    <span class="file-name">TechnicalSkills.swift</span>
+                                </div>
+                                <div class="file-item" data-file="projects">
+                                    <span class="file-icon">🚀</span>
+                                    <span class="file-name">KeyProjects.swift</span>
+                                </div>
+                                <div class="file-item" data-file="education">
+                                    <span class="file-icon">🎓</span>
+                                    <span class="file-name">Education.swift</span>
+                                </div>
+                                <div class="file-item" data-file="contact">
+                                    <span class="file-icon">📞</span>
+                                    <span class="file-name">ContactInfo.swift</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- App Content -->
-                <div class="app-content">
-                    <div class="scrollable-content">
-                        <div class="page-wrapper">
-        <!-- Hero Section -->
-        <header class="hero" id="hero" role="banner">
-            <div class="hero-content">
-                <div class="profile-avatar" role="img" aria-label="Quang Tran Minh Profile">
-                    <div class="avatar-ring" aria-hidden="true"></div>
-                    <div class="avatar-inner">Q</div>
+
+                <!-- Search Navigator -->
+                <div class="nav-panel" id="search-nav">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search in project..." class="search-input">
+                        <div class="search-results">
+                            <div class="search-result">
+                                <span class="result-file">PersonalInfo.swift</span>
+                                <span class="result-line">Line 12: iOS Developer</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="hero-name">Quang Tran Minh</h1>
-                <h2 class="hero-title">Mobile Technical Leader & Product Management Expert</h2>
-                <p class="hero-description">
-                    10+ years crafting exceptional mobile experiences with Apple's design philosophy
-                </p>
-                <address class="contact-cards">
-                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy email address">
-                        <div class="contact-icon" aria-hidden="true">📧</div>
-                        <div class="contact-info">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">trmquang3103@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy phone number">
-                        <div class="contact-icon" aria-hidden="true">📱</div>
-                        <div class="contact-info">
-                            <span class="contact-label">Phone</span>
-                            <span class="contact-value">+84-969-993-103</span>
-                        </div>
-                    </div>
-                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy location">
-                        <div class="contact-icon" aria-hidden="true">📍</div>
-                        <div class="contact-info">
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value">Hanoi, Vietnam</span>
-                        </div>
-                    </div>
-                </address>
-            </div>
-        </header>
 
-        <!-- Navigation -->
-        <nav class="nav-bar" id="nav" role="navigation" aria-label="Main navigation">
-            <div class="nav-content">
-                <a href="#hero" class="nav-item active" data-section="hero" aria-current="page">Overview</a>
-                <a href="#expertise" class="nav-item" data-section="expertise">Expertise</a>
-                <a href="#experience" class="nav-item" data-section="experience">Experience</a>
-                <a href="#achievements" class="nav-item" data-section="achievements">Impact</a>
-                <a href="#education" class="nav-item" data-section="education">Background</a>
-            </div>
-        </nav>
-
-        <!-- Summary Section -->
-        <section class="summary-section" id="summary" aria-labelledby="summary-title">
-            <div class="container">
-                <div class="summary-card">
-                    <h3 id="summary-title" class="section-title">Executive Summary</h3>
-                    <div class="summary-content">
-                        <p>
-                            <strong>Experienced Mobile Technical Leader with 10+ years</strong> of comprehensive mobile development expertise and proven product management capabilities. Successfully led cross-functional teams in delivering complex mobile ecosystems and super applications with <strong>500K+ combined downloads</strong>.
-                        </p>
-                        <p>
-                            Specialized in architecting secure, scalable mobile solutions with deep expertise in product strategy, technical leadership, and business-driven development. Expert in Apple's entire ecosystem and AI-powered applications with proven track record in <strong>managing multiple concurrent projects</strong> and driving product decisions from conception to market success.
-                        </p>
-                        <div class="summary-stats" role="group" aria-label="Career statistics">
-                            <div class="stat-item">
-                                <div class="stat-number" aria-label="10 plus years">10+</div>
-                                <div class="stat-label">Years Experience</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" aria-label="500 thousand plus downloads">500K+</div>
-                                <div class="stat-label">Downloads</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" aria-label="20 plus team members">20+</div>
-                                <div class="stat-label">Team Members</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" aria-label="4.5 plus app store rating">4.5+</div>
-                                <div class="stat-label">App Store Rating</div>
-                            </div>
+                <!-- Issues Navigator -->
+                <div class="nav-panel" id="issues-nav">
+                    <div class="issues-list">
+                        <div class="issue-item success">
+                            <span class="issue-icon">✅</span>
+                            <span class="issue-text">All skills validated</span>
+                        </div>
+                        <div class="issue-item info">
+                            <span class="issue-icon">ℹ️</span>
+                            <span class="issue-text">Portfolio ready for deployment</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Expertise Section -->
-        <section class="expertise-section" id="expertise" aria-labelledby="expertise-title">
-            <div class="container">
-                <h3 id="expertise-title" class="section-title">Core Technical Expertise</h3>
-                <div class="expertise-grid">
-                    <article class="expertise-card">
-                        <header class="card-header">
-                            <div class="card-icon" aria-hidden="true">📱</div>
-                            <h4>Mobile Development & Architecture</h4>
-                            <span class="experience-badge">10+ Years</span>
-                        </header>
-                        <div class="card-content">
-                            <div class="skill-group">
-                                <span class="skill-category" role="heading" aria-level="5">Languages</span>
-                                <div class="skill-tags" role="group" aria-label="Programming languages">
-                                    <button class="skill-tag" type="button" aria-pressed="false">Swift</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">Objective-C</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">C/C++</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">JavaScript</button>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category" role="heading" aria-level="5">Modern iOS</span>
-                                <div class="skill-tags" role="group" aria-label="Modern iOS technologies">
-                                    <button class="skill-tag featured" type="button" aria-pressed="false">SwiftUI</button>
-                                    <button class="skill-tag featured" type="button" aria-pressed="false">Swift Concurrency</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">Combine</button>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category" role="heading" aria-level="5">Architecture</span>
-                                <div class="skill-tags" role="group" aria-label="Architecture patterns">
-                                    <button class="skill-tag" type="button" aria-pressed="false">MVVM</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">MVP</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">VIPER</button>
-                                    <button class="skill-tag" type="button" aria-pressed="false">Clean Architecture</button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+        <!-- Main Editor -->
+        <div class="editor-container">
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <div class="tab active" data-file="personal-info">
+                    <span class="tab-icon">👤</span>
+                    <span class="tab-name">PersonalInfo.swift</span>
+                    <button class="tab-close">×</button>
+                </div>
+            </div>
 
-                    <div class="expertise-card">
-                        <div class="card-header">
-                            <div class="card-icon">🧠</div>
-                            <h4>AI/ML & Advanced Technologies</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="skill-group">
-                                <span class="skill-category">Apple Intelligence</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag featured">Vision Framework</span>
-                                    <span class="skill-tag featured">Core ML</span>
-                                    <span class="skill-tag">NLP</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category">Security Features</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Biometric Auth</span>
-                                    <span class="skill-tag">Fraud Detection</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category">Image Processing</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Core Image</span>
-                                    <span class="skill-tag">Metal Performance</span>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Code Editor -->
+            <div class="code-editor">
+                <div class="line-numbers">
+                    <div class="line-number">1</div>
+                    <div class="line-number">2</div>
+                    <div class="line-number">3</div>
+                    <div class="line-number">4</div>
+                    <div class="line-number">5</div>
+                    <div class="line-number">6</div>
+                    <div class="line-number">7</div>
+                    <div class="line-number">8</div>
+                    <div class="line-number">9</div>
+                    <div class="line-number">10</div>
+                    <div class="line-number">11</div>
+                    <div class="line-number">12</div>
+                    <div class="line-number">13</div>
+                    <div class="line-number">14</div>
+                    <div class="line-number">15</div>
+                    <div class="line-number">16</div>
+                    <div class="line-number">17</div>
+                    <div class="line-number">18</div>
+                    <div class="line-number">19</div>
+                    <div class="line-number">20</div>
+                </div>
+
+                <div class="code-content">
+                    <!-- Personal Info Content -->
+                    <div class="file-content active" id="personal-info-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+<span class="keyword">import</span> <span class="type">UIKit</span>
+
+<span class="comment">// MARK: - Personal Information</span>
+<span class="keyword">class</span> <span class="type">PersonalInfo</span>: <span class="type">Developer</span> {
+    
+    <span class="keyword">let</span> <span class="property">fullName</span> = <span class="string">"Quang Tran Minh"</span>
+    <span class="keyword">let</span> <span class="property">title</span> = <span class="string">"Mobile Technical Leader & Product Management Expert"</span>
+    <span class="keyword">let</span> <span class="property">location</span> = <span class="string">"Hanoi, Vietnam"</span>
+    <span class="keyword">let</span> <span class="property">experience</span> = <span class="number">10</span> <span class="comment">// years</span>
+    
+    <span class="comment">// Contact Information</span>
+    <span class="keyword">let</span> <span class="property">email</span> = <span class="string">"trmquang3103@gmail.com"</span>
+    <span class="keyword">let</span> <span class="property">phone</span> = <span class="string">"+84-969-993-103"</span>
+    <span class="keyword">let</span> <span class="property">workingHours</span> = <span class="string">"Flexible"</span>
+    
+    <span class="comment">// Professional Summary</span>
+    <span class="keyword">func</span> <span class="function">getSummary</span>() -> <span class="type">String</span> {
+        <span class="keyword">return</span> <span class="string">"""
+        Experienced Mobile Technical Leader with 10+ years of comprehensive 
+        mobile development expertise and proven product management capabilities. 
+        Successfully led cross-functional teams in delivering complex mobile 
+        ecosystems and super applications with 500K+ combined downloads.
+        """</span>
+    }
+}</pre>
                     </div>
 
-                    <div class="expertise-card">
-                        <div class="card-header">
-                            <div class="card-icon">👥</div>
-                            <h4>Product Management & Leadership</h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="skill-group">
-                                <span class="skill-category">Product Strategy</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Market Analysis</span>
-                                    <span class="skill-tag">Roadmap Planning</span>
-                                    <span class="skill-tag">Feature Priority</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category">Project Management</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag featured">Multi-project</span>
-                                    <span class="skill-tag">Resource Allocation</span>
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <span class="skill-category">Leadership</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Team Management</span>
-                                    <span class="skill-tag">Executive Reporting</span>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Experience Content -->
+                    <div class="file-content" id="experience-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+
+<span class="comment">// MARK: - Work Experience</span>
+<span class="keyword">struct</span> <span class="type">WorkExperience</span> {
+    
+    <span class="comment">// Current Position</span>
+    <span class="keyword">let</span> <span class="property">currentRole</span> = <span class="type">Position</span>(
+        title: <span class="string">"Senior iOS Developer"</span>,
+        company: <span class="string">"CBTW"</span>,
+        duration: <span class="string">"2+ years"</span>,
+        responsibilities: [
+            <span class="string">"Developed iOS application for Shahid streaming platform"</span>,
+            <span class="string">"Collaborated in international environment with 10-person team"</span>,
+            <span class="string">"Contributed to architectural decisions for scalable streaming solutions"</span>,
+            <span class="string">"Worked with cross-functional teams for seamless user experiences"</span>,
+            <span class="string">"Excelled in remote collaboration and distributed workflows"</span>
+        ]
+    )
+    
+    <span class="comment">// Previous Positions</span>
+    <span class="keyword">let</span> <span class="property">previousRoles</span> = [
+        <span class="type">Position</span>(
+            title: <span class="string">"Product Manager & Senior iOS Developer"</span>,
+            company: <span class="string">"Unit Vietnam"</span>,
+            duration: <span class="string">"7 years"</span>,
+            responsibilities: [
+                <span class="string">"Managed 5+ concurrent mobile projects simultaneously"</span>,
+                <span class="string">"Led product strategy development for multiple iOS applications"</span>,
+                <span class="string">"Coordinated cross-functional teams of 20+ developers"</span>,
+                <span class="string">"Delivered 10+ iOS applications with 4.5+ App Store ratings"</span>,
+                <span class="string">"Architected secure solutions handling 100K+ concurrent users"</span>
+            ]
+        ),
+        <span class="type">Position</span>(
+            title: <span class="string">"iOS Developer"</span>,
+            company: <span class="string">"LBPro Poland"</span>,
+            duration: <span class="string">"1+ years"</span>,
+            responsibilities: [
+                <span class="string">"Developed multiple iOS applications from concept to release"</span>,
+                <span class="string">"Implemented security features and push notifications"</span>
+            ]
+        )
+    ]
+}</pre>
+                    </div>
+
+                    <!-- Skills Content -->
+                    <div class="file-content" id="skills-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+
+<span class="comment">// MARK: - Technical Skills</span>
+<span class="keyword">enum</span> <span class="type">TechnicalSkills</span> {
+    
+    <span class="comment">// Mobile Development (10+ Years)</span>
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">languages</span> = [<span class="string">"Swift"</span>, <span class="string">"Objective-C"</span>, <span class="string">"C/C++"</span>, <span class="string">"JavaScript"</span>]
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">modernIOS</span> = [<span class="string">"SwiftUI"</span>, <span class="string">"Swift Concurrency"</span>, <span class="string">"Combine"</span>]
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">architecture</span> = [<span class="string">"MVVM"</span>, <span class="string">"MVP"</span>, <span class="string">"VIPER"</span>, <span class="string">"Clean Architecture"</span>]
+    
+    <span class="comment">// AI/ML & Advanced Technologies</span>
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">aiFrameworks</span> = [<span class="string">"Core ML"</span>, <span class="string">"Vision Framework"</span>, <span class="string">"NLP"</span>]
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">security</span> = [<span class="string">"Biometric Authentication"</span>, <span class="string">"Fraud Detection"</span>]
+    
+    <span class="comment">// Product Management</span>
+    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">productSkills</span> = [
+        <span class="string">"Product Strategy"</span>,
+        <span class="string">"Market Analysis"</span>, 
+        <span class="string">"Roadmap Planning"</span>,
+        <span class="string">"Stakeholder Management"</span>
+    ]
+    
+    <span class="comment">// Achievement Metrics</span>
+    <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">getMetrics</span>() -> [<span class="type">String</span>: <span class="type">Any</span>] {
+        <span class="keyword">return</span> [
+            <span class="string">"appsDelivered"</span>: <span class="number">10</span>,
+            <span class="string">"averageRating"</span>: <span class="number">4.5</span>,
+            <span class="string">"concurrentUsers"</span>: <span class="string">"100K+"</span>,
+            <span class="string">"crashRate"</span>: <span class="string">"<0.5%"</span>
+        ]
+    }
+}</pre>
+                    </div>
+
+                    <!-- Projects Content -->
+                    <div class="file-content" id="projects-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+
+<span class="comment">// MARK: - Key Projects</span>
+<span class="keyword">class</span> <span class="type">KeyProjects</span> {
+    
+    <span class="comment">// Project Achievements</span>
+    <span class="keyword">let</span> <span class="property">totalDownloads</span> = <span class="string">"500K+"</span>
+    <span class="keyword">let</span> <span class="property">concurrentProjects</span> = <span class="number">5</span>
+    <span class="keyword">let</span> <span class="property">teamSize</span> = <span class="number">20</span>
+    
+    <span class="comment">// Leadership Highlights</span>
+    <span class="keyword">func</span> <span class="function">getLeadershipAchievements</span>() -> [<span class="type">String</span>] {
+        <span class="keyword">return</span> [
+            <span class="string">"Led cross-functional teams of 20+ developers"</span>,
+            <span class="string">"Managed 5+ concurrent mobile projects"</span>,
+            <span class="string">"Delivered complex mobile ecosystems"</span>,
+            <span class="string">"Coordinated international stakeholder relationships"</span>
+        ]
+    }
+    
+    <span class="comment">// Technical Achievements</span>
+    <span class="keyword">func</span> <span class="function">getTechnicalAchievements</span>() -> [<span class="type">String</span>] {
+        <span class="keyword">return</span> [
+            <span class="string">"Architected secure solutions for 100K+ users"</span>,
+            <span class="string">"Implemented AI-driven security features"</span>,
+            <span class="string">"Migrated legacy Objective-C to modern Swift"</span>,
+            <span class="string">"Achieved <0.5% crash rates"</span>
+        ]
+    }
+    
+    <span class="comment">// Business Impact</span>
+    <span class="keyword">func</span> <span class="function">getBusinessImpact</span>() -> [<span class="type">String</span>] {
+        <span class="keyword">return</span> [
+            <span class="string">"Delivered projects on time and within budget"</span>,
+            <span class="string">"Achieved 4.5+ App Store ratings consistently"</span>,
+            <span class="string">"Drove product roadmap decisions"</span>,
+            <span class="string">"Balanced technical feasibility with business objectives"</span>
+        ]
+    }
+}</pre>
+                    </div>
+
+                    <!-- Education Content -->
+                    <div class="file-content" id="education-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+
+<span class="comment">// MARK: - Education & Qualifications</span>
+<span class="keyword">struct</span> <span class="type">Education</span> {
+    
+    <span class="comment">// Formal Education</span>
+    <span class="keyword">let</span> <span class="property">degree</span> = <span class="type">Degree</span>(
+        title: <span class="string">"Bachelor of Computer Science"</span>,
+        institution: <span class="string">"Wyższa Szkoła Informatyki w Łodzi"</span>,
+        specialization: <span class="string">"Information Technology"</span>,
+        period: <span class="string">"2013-2017"</span>,
+        grade: <span class="string">"Engineer"</span>
+    )
+    
+    <span class="comment">// Relevant Coursework</span>
+    <span class="keyword">let</span> <span class="property">coursework</span> = [
+        <span class="string">"Data Structures & Algorithms"</span>,
+        <span class="string">"Software Engineering"</span>,
+        <span class="string">"Mobile App Development"</span>,
+        <span class="string">"Computer Networks"</span>,
+        <span class="string">"Project Management"</span>,
+        <span class="string">"Business Analysis"</span>
+    ]
+    
+    <span class="comment">// Professional Development</span>
+    <span class="keyword">let</span> <span class="property">continuousLearning</span> = [
+        <span class="string">"Apple Developer Program Member"</span>,
+        <span class="string">"iOS Development Best Practices"</span>,
+        <span class="string">"Product Management Methodologies"</span>,
+        <span class="string">"Agile & Scrum Practices"</span>
+    ]
+    
+    <span class="comment">// Remote Work Excellence</span>
+    <span class="keyword">let</span> <span class="property">remoteWorkSkills</span> = [
+        <span class="string">"3+ years remote development experience"</span>,
+        <span class="string">"Fluent English communication"</span>,
+        <span class="string">"Expert in asynchronous communication"</span>,
+        <span class="string">"Cross-cultural collaboration expertise"</span>
+    ]
+}</pre>
+                    </div>
+
+                    <!-- Contact Content -->
+                    <div class="file-content" id="contact-content">
+                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
+<span class="keyword">import</span> <span class="type">Contacts</span>
+
+<span class="comment">// MARK: - Contact Information</span>
+<span class="keyword">class</span> <span class="type">ContactInfo</span>: <span class="type">ObservableObject</span> {
+    
+    <span class="comment">// Contact Details</span>
+    <span class="keyword">let</span> <span class="property">primaryEmail</span> = <span class="string">"trmquang3103@gmail.com"</span>
+    <span class="keyword">let</span> <span class="property">phoneNumber</span> = <span class="string">"+84-969-993-103"</span>
+    <span class="keyword">let</span> <span class="property">location</span> = <span class="string">"Hanoi, Vietnam"</span>
+    
+    <span class="comment">// Professional Links</span>
+    <span class="keyword">let</span> <span class="property">linkedIn</span> = <span class="string">"https://linkedin.com/in/quang-tran-minh"</span>
+    <span class="keyword">let</span> <span class="property">github</span> = <span class="string">"https://github.com/quang-tran-minh"</span>
+    
+    <span class="comment">// Availability</span>
+    <span class="keyword">let</span> <span class="property">availability</span> = <span class="type">Availability</span>(
+        startDate: <span class="string">"Immediate"</span>,
+        workSchedule: <span class="string">"Full-time, flexible hours"</span>,
+        workLocation: <span class="string">"Hybrid/Remote arrangements welcome"</span>,
+        languages: [<span class="string">"Native Vietnamese"</span>, <span class="string">"Fluent English"</span>]
+    )
+    
+    <span class="comment">// Professional Status</span>
+    <span class="keyword">func</span> <span class="function">getCurrentStatus</span>() -> <span class="type">String</span> {
+        <span class="keyword">return</span> <span class="string">"Available for new opportunities"</span>
+    }
+    
+    <span class="comment">// Additional Information</span>
+    <span class="keyword">func</span> <span class="function">getAdditionalInfo</span>() -> [<span class="type">String</span>] {
+        <span class="keyword">return</span> [
+            <span class="string">"References available upon request"</span>,
+            <span class="string">"Detailed project portfolio available"</span>,
+            <span class="string">"Open to discussing project opportunities"</span>
+        ]
+    }
+}</pre>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Experience Section -->
-        <section class="experience-section" id="experience">
-            <div class="container">
-                <h3 class="section-title">Professional Experience</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="job-info">
-                                        <h4 class="job-title">Product Manager & Senior iOS Developer</h4>
-                                        <div class="company-info">
-                                            <span class="company-name">Unit Vietnam</span>
-                                            <span class="job-duration">7 years</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-content">
-                                    <div class="achievement-section">
-                                        <h5>Leadership & Product Management</h5>
-                                        <ul class="achievement-list">
-                                            <li><strong>Managed 5+ concurrent mobile projects</strong> simultaneously, delivering products across different market segments</li>
-                                            <li><strong>Led product strategy development</strong> for multiple iOS applications, from market research to post-launch optimization</li>
-                                            <li><strong>Coordinated cross-functional teams</strong> of 20+ developers, designers, QA, and business stakeholders</li>
-                                            <li><strong>Drove product roadmap decisions</strong> balancing technical feasibility with business objectives</li>
-                                        </ul>
-                                    </div>
-                                    <div class="achievement-section">
-                                        <h5>Technical Leadership Achievements</h5>
-                                        <ul class="achievement-list">
-                                            <li>Successfully delivered <strong>10+ iOS applications with 4.5+ App Store ratings</strong></li>
-                                            <li><strong>Architected secure solutions</strong> handling 100K+ concurrent users with <0.5% crash rates</li>
-                                            <li><strong>Led technical decision-making</strong> for architecture choices and security implementations</li>
-                                            <li><strong>Spearheaded migration</strong> from legacy Objective-C to modern Swift architecture</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="job-info">
-                                        <h4 class="job-title">Senior iOS Developer</h4>
-                                        <div class="company-info">
-                                            <span class="company-name">CBTW</span>
-                                            <span class="job-duration">2+ years</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-content">
-                                    <ul class="achievement-list">
-                                        <li>Develop iOS application for <strong>Shahid streaming platform</strong> serving millions of users across the Middle East</li>
-                                        <li><strong>Collaborate in international environment</strong> with 10-person iOS team ensuring enterprise-grade quality</li>
-                                        <li><strong>Contribute to architectural decisions</strong> for scalable streaming solutions handling high-traffic loads</li>
-                                        <li>Excel in <strong>remote collaboration</strong> with asynchronous communication and distributed workflows</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="job-info">
-                                        <h4 class="job-title">iOS Developer</h4>
-                                        <div class="company-info">
-                                            <span class="company-name">LBPro Poland</span>
-                                            <span class="job-duration">1+ years</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="job-content">
-                                    <ul class="achievement-list">
-                                        <li>Developed and maintained multiple iOS applications from <strong>concept to App Store release</strong></li>
-                                        <li>Implemented <strong>security features</strong> including push notifications, location services, and background processing</li>
-                                        <li>Contributed to <strong>open-source iOS libraries</strong> and frameworks</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Inspector Panel -->
+        <div class="inspector">
+            <div class="inspector-header">
+                <h3>Inspector</h3>
+                <div class="inspector-tabs">
+                    <button class="inspector-tab active" data-tab="file">📄</button>
+                    <button class="inspector-tab" data-tab="quick">⚡</button>
+                    <button class="inspector-tab" data-tab="identity">🆔</button>
                 </div>
             </div>
-        </section>
 
-        <!-- Key Achievements -->
-        <section class="achievements-section" id="achievements">
-            <div class="container">
-                <h3 class="section-title">Key Differentiators</h3>
-                <div class="achievements-grid">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">🏆</div>
-                        <h4>Leadership Excellence</h4>
-                        <ul>
-                            <li><strong>Multi-project management</strong> with proven ability to prioritize and deliver concurrent initiatives</li>
-                            <li><strong>Technical-business bridge</strong> translating complex concepts to stakeholders</li>
-                            <li><strong>Team mentorship</strong> developing junior to senior developers</li>
-                        </ul>
-                    </div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">🎯</div>
-                        <h4>Product-Driven Approach</h4>
-                        <ul>
-                            <li><strong>User-centric development</strong> with deep understanding of market needs</li>
-                            <li><strong>Data-driven decision making</strong> using analytics and user feedback</li>
-                            <li><strong>Business strategy alignment</strong> ensuring technical solutions support objectives</li>
-                        </ul>
-                    </div>
-                    <div class="achievement-card">
-                        <div class="achievement-icon">🔒</div>
-                        <h4>Security & Scale Expertise</h4>
-                        <ul>
-                            <li><strong>Enterprise-grade security</strong> implementation for high-traffic applications</li>
-                            <li><strong>Performance optimization</strong> for 100K+ concurrent users</li>
-                            <li><strong>Scalable architecture</strong> design for future growth and expansion</li>
-                        </ul>
+            <div class="inspector-content">
+                <div class="inspector-panel active" id="file-inspector">
+                    <div class="property-group">
+                        <h4>File Properties</h4>
+                        <div class="property-item">
+                            <span class="property-label">Type:</span>
+                            <span class="property-value">Swift Source</span>
+                        </div>
+                        <div class="property-item">
+                            <span class="property-label">Lines:</span>
+                            <span class="property-value">20</span>
+                        </div>
+                        <div class="property-item">
+                            <span class="property-label">Size:</span>
+                            <span class="property-value">2.1 KB</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Education & Background -->
-        <section class="education-section" id="education">
-            <div class="container">
-                <h3 class="section-title">Education & Background</h3>
-                <div class="education-grid">
-                    <div class="education-card">
-                        <div class="education-icon">🎓</div>
-                        <h4>Education</h4>
-                        <div class="education-details">
-                            <strong>Bachelor of Computer Science</strong><br>
-                            <em>Wyższa Szkoła Informatyki w Łodzi</em><br>
-                            Engineer, Information Technology • 2013-2017
-                        </div>
-                        <div class="coursework">
-                            <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Software Engineering, Mobile App Development, Computer Networks, Project Management, Business Analysis
-                        </div>
-                    </div>
-                    <div class="education-card">
-                        <div class="education-icon">🌍</div>
-                        <h4>Remote Work Excellence</h4>
-                        <ul class="education-list">
-                            <li><strong>3+ years remote development experience</strong> with proven track record</li>
-                            <li><strong>Fluent English</strong> with extensive international stakeholder management</li>
-                            <li><strong>Expert in asynchronous communication</strong> tools and distributed team coordination</li>
-                            <li><strong>Cross-cultural collaboration</strong> experience across different time zones</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="availability-card">
-                    <h4>Availability</h4>
-                    <div class="availability-grid">
-                        <div class="availability-item">
-                            <span class="availability-label">Start Date</span>
-                            <span class="availability-value">Immediate</span>
-                        </div>
-                        <div class="availability-item">
-                            <span class="availability-label">Work Schedule</span>
-                            <span class="availability-value">Full-time, flexible hours</span>
-                        </div>
-                        <div class="availability-item">
-                            <span class="availability-label">Location</span>
-                            <span class="availability-value">Hanoi, Vietnam (Open to hybrid/remote)</span>
-                        </div>
-                        <div class="availability-item">
-                            <span class="availability-label">Languages</span>
-                            <span class="availability-value">Native Vietnamese, Fluent English</span>
+                <div class="inspector-panel" id="quick-inspector">
+                    <div class="property-group">
+                        <h4>Quick Help</h4>
+                        <div class="help-content">
+                            <p>This file contains personal information and professional summary for Quang Tran Minh's
+                                CV.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p><em>References and detailed project portfolio available upon request</em></p>
-            </div>
-        </footer>
+                <div class="inspector-panel" id="identity-inspector">
+                    <div class="property-group">
+                        <h4>Identity</h4>
+                        <div class="property-item">
+                            <span class="property-label">Name:</span>
+                            <span class="property-value">PersonalInfo.swift</span>
+                        </div>
+                        <div class="property-item">
+                            <span class="property-label">Class:</span>
+                            <span class="property-value">PersonalInfo</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Scroll Indicator -->
-                <div class="scroll-indicator"></div>
-                
-                <!-- iPhone Home Indicator -->
-                <div class="home-indicator"></div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="js/main.js"></script>
-    
-    <!-- Skip to main content link for accessibility -->
-    <a href="#summary" class="skip-link">Skip to main content</a>
-    
-    <!-- Screen reader only content -->
-    <div class="sr-only">
-        <h2>Page Structure</h2>
-        <p>This page contains information about Quang Tran Minh, a Mobile Technical Leader and Product Manager. The page is organized into sections including overview, expertise, experience, achievements, and educational background.</p>
+    <!-- Bottom Panel -->
+    <div class="bottom-panel">
+        <div class="console">
+            <div class="console-header">
+                <span class="console-title">Console Output</span>
+                <div class="console-controls">
+                    <button class="console-btn">Clear</button>
+                    <button class="console-btn">Filter</button>
+                </div>
+            </div>
+            <div class="console-content">
+                <div class="console-line success">
+                    <span class="timestamp">2024-01-15 14:30:12</span>
+                    <span class="message">✅ CV loaded successfully</span>
+                </div>
+                <div class="console-line info">
+                    <span class="timestamp">2024-01-15 14:30:13</span>
+                    <span class="message">ℹ️ 10+ years of experience validated</span>
+                </div>
+                <div class="console-line success">
+                    <span class="timestamp">2024-01-15 14:30:14</span>
+                    <span class="message">✅ All technical skills compiled successfully</span>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/performance.js"></script>
 </body>
+
 </html>

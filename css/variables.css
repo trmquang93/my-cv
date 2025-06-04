@@ -1,100 +1,133 @@
-/* Premium iPhone CV Variables */
-
+/* CSS Variables for Xcode Theme */
 :root {
-    /* iPhone Frame Dimensions (Based on Figma Design) */
-    --iphone-width: 380px;
-    --iphone-height: 780px;
-    --iphone-border-radius: 47px;
-    --iphone-border-width: 25px;
-    --screen-width: 340px;
-    --screen-height: 720px;
-    --notch-width: 126px;
-    --notch-height: 37px;
-    
-    /* Premium Color Palette */
-    --primary-blue: #007AFF;
-    --primary-blue-dark: #0056CC;
-    --secondary-blue: #5AC8FA;
-    --accent-gray: #8E8E93;
-    --light-gray: #F2F2F7;
-    --dark-gray: #1C1C1E;
-    --surface-white: #FFFFFF;
-    --text-primary: #000000;
-    --text-secondary: #6D6D80;
-    --text-tertiary: #8E8E93;
-    
-    /* iPhone Specific Colors */
-    --iphone-frame: linear-gradient(135deg, #C9B037 0%, #F4E96B 25%, #C9B037 50%, #FFD700 75%, #C9B037 100%);
-    --iphone-screen-bg: #000000;
-    --status-bar-bg: rgba(0, 0, 0, 0.8);
-    --nav-bar-bg: rgba(242, 242, 247, 0.94);
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    
-    /* Apple Typography */
-    --font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    
-    /* iOS Spacing System */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
-    --spacing-2xl: 48px;
-    --spacing-3xl: 64px;
-    
-    /* iOS Border Radius */
-    --radius-xs: 4px;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-2xl: 32px;
-    
-    /* Premium Shadows */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-iphone: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 15px 30px -15px rgba(0, 0, 0, 0.3);
-    
-    /* Cinematic Transitions */
-    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    /* Glassmorphism */
-    --glass-backdrop: blur(20px);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-dark: linear-gradient(135deg, #434343 0%, #000000 100%);
+  /* Theme Colors */
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #2d2d30;
+  --bg-accent: #094771;
+  --bg-hover: #2a2d2e;
+  --bg-selected: #264f78;
+  
+  /* Text Colors */
+  --text-primary: #cccccc;
+  --text-secondary: #969696;
+  --text-muted: #6a6a6a;
+  --text-accent: #569cd6;
+  --text-success: #4ec9b0;
+  --text-warning: #dcdcaa;
+  --text-error: #f44747;
+  
+  /* Syntax Highlighting Colors */
+  --syntax-keyword: #569cd6;
+  --syntax-string: #ce9178;
+  --syntax-comment: #6a9955;
+  --syntax-type: #4ec9b0;
+  --syntax-property: #9cdcfe;
+  --syntax-number: #b5cea8;
+  --syntax-function: #dcdcaa;
+  
+  /* Border Colors */
+  --border-primary: #3c3c3c;
+  --border-secondary: #464647;
+  --border-accent: #007acc;
+  
+  /* Window Chrome */
+  --chrome-bg: #323233;
+  --traffic-red: #ff5f57;
+  --traffic-yellow: #ffbd2e;
+  --traffic-green: #28ca42;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  
+  /* Typography */
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-loose: 1.6;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+  
+  /* Shadows */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-heavy: 0 4px 12px rgba(0, 0, 0, 0.4);
+  
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  
+  /* Z-Index */
+  --z-dropdown: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
 }
 
-/* iPhone Specific Media Queries */
-@media (max-width: 480px) {
-    :root {
-        --iphone-width: 320px;
-        --iphone-height: 693px;
-        --screen-width: 304px;
-        --screen-height: 659px;
-    }
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --bg-tertiary: #e8e8e8;
+  --bg-accent: #0066cc;
+  --bg-hover: #e1e1e1;
+  --bg-selected: #cce7ff;
+  
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --text-accent: #0066cc;
+  --text-success: #007b4f;
+  --text-warning: #b8860b;
+  --text-error: #d73a49;
+  
+  --syntax-keyword: #0066cc;
+  --syntax-string: #d73a49;
+  --syntax-comment: #6a737d;
+  --syntax-type: #005cc5;
+  --syntax-property: #6f42c1;
+  --syntax-number: #005cc5;
+  --syntax-function: #6f42c1;
+  
+  --border-primary: #d0d7de;
+  --border-secondary: #b6b6b6;
+  --border-accent: #0066cc;
+  
+  --chrome-bg: #f6f6f6;
 }
 
-@media (min-width: 1200px) {
-    :root {
-        --iphone-width: 450px;
-        --iphone-height: 975px;
-        --screen-width: 428px;
-        --screen-height: 926px;
-    }
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --border-primary: #ffffff;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0s;
+    --transition-normal: 0s;
+    --transition-slow: 0s;
+  }
 }

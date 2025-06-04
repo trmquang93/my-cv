@@ -1,328 +1,392 @@
-// Performance Optimization Manager
-
-import { Utils } from './utils.js';
-
-export class PerformanceManager {
-    constructor() {
-        this.imageObserver = null;
-        this.loadedImages = new Set();
-        this.criticalResources = new Map();
+// Performance Optimization for Xcode CV
+class PerformanceManager {
+  constructor() {
+    this.observers = new Map();
+    this.rafId = null;
+    this.metrics = {
+      fps: 0,
+      renderTime: 0,
+      memoryUsage: 0
+    };
+    
+    this.init();
+  }
+  
+  init() {
+    this.setupIntersectionObserver();
+    this.setupPerformanceMonitoring();
+    this.setupLazyLoading();
+    this.setupVirtualScrolling();
+    this.optimizeAnimations();
+  }
+  
+  setupIntersectionObserver() {
+    // Optimize rendering by only animating visible elements
+    const observerOptions = {
+      root: null,
+      rootMargin: '50px',
+      threshold: 0.1
+    };
+    
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const element = entry.target;
         
-        this.init();
-    }
-
-    init() {
-        this.setupLazyLoading();
-        this.setupImageOptimization();
-        this.setupCriticalResourceLoading();
-        this.setupPerformanceMonitoring();
-        this.setupPreloader();
-    }
-
-    setupLazyLoading() {
-        // Setup intersection observer for lazy loading
-        const imageObserverOptions = {
-            root: null,
-            rootMargin: '50px',
-            threshold: 0.1
-        };
-
-        this.imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.loadImage(entry.target);
-                    this.imageObserver.unobserve(entry.target);
-                }
-            });
-        }, imageObserverOptions);
-
-        // Observe all images with data-src
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => {
-            this.imageObserver.observe(img);
-        });
-    }
-
-    loadImage(img) {
-        const src = img.getAttribute('data-src');
-        if (src && !this.loadedImages.has(img)) {
-            img.src = src;
-            img.removeAttribute('data-src');
-            this.loadedImages.add(img);
-            
-            img.addEventListener('load', () => {
-                img.classList.add('loaded');
-            });
+        if (entry.isIntersecting) {
+          element.classList.add('in-viewport');
+          this.enableAnimations(element);
+        } else {
+          element.classList.remove('in-viewport');
+          this.disableAnimations(element);
         }
-    }
-
-    setupImageOptimization() {
-        // Add loading="lazy" to images that don't have it
-        const images = document.querySelectorAll('img:not([loading])');
-        images.forEach(img => {
-            img.setAttribute('loading', 'lazy');
-        });
-
-        // Add proper sizing attributes
-        this.optimizeImageSizing();
-    }
-
-    optimizeImageSizing() {
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (!img.hasAttribute('width') || !img.hasAttribute('height')) {
-                // Set default dimensions to prevent layout shift
-                img.style.aspectRatio = '16/9';
-                img.style.objectFit = 'cover';
-            }
-        });
-    }
-
-    setupCriticalResourceLoading() {
-        // Preload critical resources
-        this.preloadCriticalFonts();
-        this.preloadCriticalImages();
-        this.preloadCriticalStyles();
-    }
-
-    preloadCriticalFonts() {
-        const criticalFonts = [
-            'https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap'
-        ];
-
-        criticalFonts.forEach(fontUrl => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'style';
-            link.href = fontUrl;
-            link.crossOrigin = 'anonymous';
-            document.head.appendChild(link);
-        });
-    }
-
-    preloadCriticalImages() {
-        // Preload above-the-fold images
-        const criticalImages = [
-            // Add any critical images here
-        ];
-
-        criticalImages.forEach(imageUrl => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = imageUrl;
-            document.head.appendChild(link);
-        });
-    }
-
-    preloadCriticalStyles() {
-        // Inline critical CSS for faster rendering
-        const criticalCSS = `
-            .hero { display: block; }
-            .nav-bar { display: block; }
-            .page-wrapper { display: block; }
-        `;
-
-        const style = document.createElement('style');
-        style.textContent = criticalCSS;
-        document.head.insertBefore(style, document.head.firstChild);
-    }
-
-    setupPerformanceMonitoring() {
-        // Monitor Core Web Vitals
-        if ('PerformanceObserver' in window) {
-            this.monitorLCP();
-            this.monitorFID();
-            this.monitorCLS();
-        }
-
-        // Monitor resource loading
-        this.monitorResourceLoading();
-    }
-
-    monitorLCP() {
-        try {
-            const observer = new PerformanceObserver((list) => {
-                const entries = list.getEntries();
-                const lastEntry = entries[entries.length - 1];
-                
-                console.log('LCP:', lastEntry.startTime);
-                
-                // You can send this data to analytics
-                this.reportMetric('LCP', lastEntry.startTime);
-            });
-            
-            observer.observe({ entryTypes: ['largest-contentful-paint'] });
-        } catch (error) {
-            console.warn('LCP monitoring not supported:', error);
-        }
-    }
-
-    monitorFID() {
-        try {
-            const observer = new PerformanceObserver((list) => {
-                const entries = list.getEntries();
-                entries.forEach(entry => {
-                    console.log('FID:', entry.processingStart - entry.startTime);
-                    this.reportMetric('FID', entry.processingStart - entry.startTime);
-                });
-            });
-            
-            observer.observe({ entryTypes: ['first-input'] });
-        } catch (error) {
-            console.warn('FID monitoring not supported:', error);
-        }
-    }
-
-    monitorCLS() {
-        try {
-            let clsValue = 0;
-            
-            const observer = new PerformanceObserver((list) => {
-                const entries = list.getEntries();
-                entries.forEach(entry => {
-                    if (!entry.hadRecentInput) {
-                        clsValue += entry.value;
-                        console.log('CLS:', clsValue);
-                        this.reportMetric('CLS', clsValue);
-                    }
-                });
-            });
-            
-            observer.observe({ entryTypes: ['layout-shift'] });
-        } catch (error) {
-            console.warn('CLS monitoring not supported:', error);
-        }
-    }
-
-    monitorResourceLoading() {
-        window.addEventListener('load', () => {
-            const navigation = performance.getEntriesByType('navigation')[0];
-            const resources = performance.getEntriesByType('resource');
-            
-            console.log('Page Load Time:', navigation.loadEventEnd - navigation.fetchStart);
-            console.log('DOM Content Loaded:', navigation.domContentLoadedEventEnd - navigation.fetchStart);
-            console.log('Resources Loaded:', resources.length);
-            
-            // Report slow resources
-            resources.forEach(resource => {
-                if (resource.duration > 1000) {
-                    console.warn('Slow resource:', resource.name, resource.duration);
-                }
-            });
-        });
-    }
-
-    reportMetric(name, value) {
-        // Send metrics to analytics service
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'web_vitals', {
-                event_category: 'Performance',
-                event_label: name,
-                value: Math.round(value)
-            });
-        }
+      });
+    }, observerOptions);
+    
+    // Observe all animated elements
+    document.querySelectorAll('.file-item, .tab, .console-line, .property-item').forEach(el => {
+      visibilityObserver.observe(el);
+    });
+    
+    this.observers.set('visibility', visibilityObserver);
+  }
+  
+  setupPerformanceMonitoring() {
+    // Monitor FPS and performance metrics
+    let frameCount = 0;
+    let lastTime = performance.now();
+    
+    const measurePerformance = (currentTime) => {
+      frameCount++;
+      
+      if (currentTime - lastTime >= 1000) {
+        this.metrics.fps = frameCount;
+        frameCount = 0;
+        lastTime = currentTime;
         
-        // You can also send to other analytics services
-        console.log(`Performance Metric - ${name}:`, value);
+        // Update performance display if needed
+        this.updatePerformanceDisplay();
+      }
+      
+      this.rafId = requestAnimationFrame(measurePerformance);
+    };
+    
+    this.rafId = requestAnimationFrame(measurePerformance);
+    
+    // Monitor memory usage if available
+    if ('memory' in performance) {
+      setInterval(() => {
+        this.metrics.memoryUsage = performance.memory.usedJSHeapSize / 1048576; // MB
+      }, 2000);
     }
-
-    setupPreloader() {
-        this.createPreloader();
-        this.handlePreloaderRemoval();
-    }
-
-    createPreloader() {
-        if (document.getElementById('preloader')) return;
-
-        const preloader = document.createElement('div');
-        preloader.id = 'preloader';
-        preloader.innerHTML = `
-            <div class="preloader-content">
-                <div class="preloader-spinner"></div>
-                <p>Loading premium experience...</p>
-            </div>
-        `;
-
-        document.body.insertBefore(preloader, document.body.firstChild);
-    }
-
-    handlePreloaderRemoval() {
-        // Remove preloader when page is fully loaded
-        window.addEventListener('load', () => {
-            this.removePreloader();
-        });
-
-        // Fallback: remove preloader after maximum wait time
-        setTimeout(() => {
-            this.removePreloader();
-        }, 5000);
-    }
-
-    removePreloader() {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.remove();
-                document.body.classList.add('loaded');
-            }, 500);
+  }
+  
+  setupLazyLoading() {
+    // Lazy load non-critical content
+    const lazyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.loadContent(entry.target);
+          lazyObserver.unobserve(entry.target);
         }
+      });
+    });
+    
+    // Mark content for lazy loading
+    document.querySelectorAll('.file-content:not(.active)').forEach(content => {
+      content.dataset.lazy = 'true';
+      lazyObserver.observe(content);
+    });
+    
+    this.observers.set('lazy', lazyObserver);
+  }
+  
+  setupVirtualScrolling() {
+    // Implement virtual scrolling for large content
+    const codeContent = document.querySelector('.code-content');
+    if (!codeContent) return;
+    
+    const virtualScroll = {
+      itemHeight: 22, // Line height in pixels
+      visibleItems: 0,
+      totalItems: 0,
+      scrollTop: 0,
+      startIndex: 0,
+      endIndex: 0
+    };
+    
+    const updateVirtualScroll = () => {
+      const containerHeight = codeContent.clientHeight;
+      virtualScroll.visibleItems = Math.ceil(containerHeight / virtualScroll.itemHeight);
+      virtualScroll.startIndex = Math.floor(virtualScroll.scrollTop / virtualScroll.itemHeight);
+      virtualScroll.endIndex = Math.min(
+        virtualScroll.startIndex + virtualScroll.visibleItems + 2,
+        virtualScroll.totalItems
+      );
+      
+      this.renderVisibleLines(virtualScroll);
+    };
+    
+    codeContent.addEventListener('scroll', () => {
+      virtualScroll.scrollTop = codeContent.scrollTop;
+      requestAnimationFrame(updateVirtualScroll);
+    });
+  }
+  
+  optimizeAnimations() {
+    // Use will-change property strategically
+    const optimizeElement = (element, properties) => {
+      element.style.willChange = properties.join(', ');
+      
+      // Remove will-change after animation
+      element.addEventListener('transitionend', () => {
+        element.style.willChange = 'auto';
+      }, { once: true });
+    };
+    
+    // Optimize frequently animated elements
+    document.querySelectorAll('.file-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        optimizeElement(item, ['transform', 'background-color']);
+      });
+    });
+    
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('mouseenter', () => {
+        optimizeElement(tab, ['transform', 'box-shadow']);
+      });
+    });
+    
+    // Use CSS containment for isolated components
+    document.querySelectorAll('.sidebar, .inspector, .editor-container').forEach(panel => {
+      panel.style.contain = 'layout style paint';
+    });
+  }
+  
+  enableAnimations(element) {
+    element.style.transition = '';
+    element.classList.remove('animations-disabled');
+  }
+  
+  disableAnimations(element) {
+    if (!element.classList.contains('in-viewport')) {
+      element.style.transition = 'none';
+      element.classList.add('animations-disabled');
     }
-
-    // Resource optimization methods
-    optimizeScrollPerformance() {
-        // Use passive event listeners for scroll events
-        const scrollElements = document.querySelectorAll('[data-scroll]');
-        scrollElements.forEach(element => {
-            element.addEventListener('scroll', this.handleScroll.bind(this), { 
-                passive: true 
-            });
+  }
+  
+  loadContent(element) {
+    if (element.dataset.lazy === 'true') {
+      // Simulate content loading
+      element.style.opacity = '0';
+      
+      setTimeout(() => {
+        element.style.transition = 'opacity 0.3s ease';
+        element.style.opacity = '1';
+        element.dataset.lazy = 'false';
+      }, 100);
+    }
+  }
+  
+  renderVisibleLines(virtualScroll) {
+    // Optimize line number rendering for large files
+    const lineNumbers = document.querySelector('.line-numbers');
+    if (!lineNumbers) return;
+    
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = virtualScroll.startIndex; i < virtualScroll.endIndex; i++) {
+      const lineNumber = document.createElement('div');
+      lineNumber.className = 'line-number';
+      lineNumber.textContent = i + 1;
+      lineNumber.style.transform = `translateY(${i * virtualScroll.itemHeight}px)`;
+      fragment.appendChild(lineNumber);
+    }
+    
+    // Replace content efficiently
+    if (lineNumbers.children.length > virtualScroll.visibleItems * 2) {
+      lineNumbers.innerHTML = '';
+      lineNumbers.appendChild(fragment);
+    }
+  }
+  
+  updatePerformanceDisplay() {
+    // Show performance metrics in console (development mode)
+    if (this.metrics.fps < 30) {
+      window.xcodeCV?.logToConsole(`Low FPS detected: ${this.metrics.fps}`, 'warning');
+    }
+    
+    if (this.metrics.memoryUsage > 50) {
+      window.xcodeCV?.logToConsole(`High memory usage: ${this.metrics.memoryUsage.toFixed(1)}MB`, 'warning');
+    }
+  }
+  
+  // Debounce utility for expensive operations
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // Throttle utility for scroll events
+  throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+  
+  // Optimize CSS animations
+  optimizeCSSAnimations() {
+    // Prefer transform and opacity for animations
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Hardware acceleration hints */
+      .file-item,
+      .tab,
+      .traffic-light,
+      .control-btn {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+      
+      /* Optimize transitions */
+      .file-item {
+        transition: transform 0.2s ease, background-color 0.2s ease;
+      }
+      
+      .tab {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      
+      /* Reduce paint complexity */
+      .code-block {
+        will-change: scroll-position;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  // Bundle size optimization
+  async loadModuleWhenNeeded(moduleName) {
+    // Dynamic import for non-critical features
+    try {
+      switch (moduleName) {
+        case 'search':
+          return await import('./search-module.js');
+        case 'themes':
+          return await import('./theme-module.js');
+        default:
+          return null;
+      }
+    } catch (error) {
+      console.warn(`Failed to load module: ${moduleName}`, error);
+      return null;
+    }
+  }
+  
+  // Memory management
+  cleanup() {
+    // Clean up observers
+    this.observers.forEach(observer => observer.disconnect());
+    this.observers.clear();
+    
+    // Cancel animation frames
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+    }
+    
+    // Clear particles if they exist
+    if (window.animationManager?.particles) {
+      window.animationManager.particles.length = 0;
+    }
+  }
+  
+  // Preload critical resources
+  preloadResources() {
+    // Preload fonts
+    const fontLinks = [
+      'https://fonts.googleapis.com/css2?family=SF+Mono:wght@400;500;600&display=swap',
+      'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+    ];
+    
+    fontLinks.forEach(href => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'style';
+      link.href = href;
+      document.head.appendChild(link);
+    });
+  }
+  
+  // Optimize scroll performance
+  optimizeScrolling() {
+    let ticking = false;
+    
+    const optimizedScrollHandler = this.throttle((e) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          // Handle scroll events efficiently
+          this.handleScroll(e);
+          ticking = false;
         });
+        ticking = true;
+      }
+    }, 16); // ~60fps
+    
+    document.querySelectorAll('.code-content, .navigator-content, .inspector-content').forEach(container => {
+      container.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+    });
+  }
+  
+  handleScroll(e) {
+    const container = e.target;
+    const scrollPercent = container.scrollTop / (container.scrollHeight - container.clientHeight);
+    
+    // Update scroll indicators efficiently
+    const indicator = container.querySelector('.scroll-progress');
+    if (indicator) {
+      indicator.style.height = (scrollPercent * 100) + '%';
     }
-
-    handleScroll(event) {
-        // Throttled scroll handler
-        Utils.throttle(() => {
-            // Scroll logic here
-        }, 16);
+  }
+  
+  // Resource prefetching
+  prefetchNextContent() {
+    const currentFile = window.xcodeCV?.currentFile;
+    const files = ['personal-info', 'experience', 'skills', 'projects', 'education', 'contact'];
+    const currentIndex = files.indexOf(currentFile);
+    const nextIndex = (currentIndex + 1) % files.length;
+    const nextFile = files[nextIndex];
+    
+    // Prefetch next file content
+    const nextContent = document.getElementById(`${nextFile}-content`);
+    if (nextContent && nextContent.dataset.lazy === 'true') {
+      this.loadContent(nextContent);
     }
-
-    // Memory management
-    cleanup() {
-        if (this.imageObserver) {
-            this.imageObserver.disconnect();
-        }
-        
-        this.loadedImages.clear();
-        this.criticalResources.clear();
-    }
-
-    // Public methods
-    getPerformanceMetrics() {
-        return {
-            loadedImages: this.loadedImages.size,
-            criticalResources: this.criticalResources.size,
-            memoryUsage: this.getMemoryUsage()
-        };
-    }
-
-    getMemoryUsage() {
-        if ('memory' in performance) {
-            return {
-                used: performance.memory.usedJSHeapSize,
-                total: performance.memory.totalJSHeapSize,
-                limit: performance.memory.jsHeapSizeLimit
-            };
-        }
-        return null;
-    }
-
-    // Force load all images (useful for testing)
-    loadAllImages() {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => {
-            this.loadImage(img);
-        });
-    }
+  }
 }
+
+// Initialize performance manager
+document.addEventListener('DOMContentLoaded', () => {
+  window.performanceManager = new PerformanceManager();
+  
+  // Setup performance optimizations
+  window.performanceManager.optimizeCSSAnimations();
+  window.performanceManager.preloadResources();
+  window.performanceManager.optimizeScrolling();
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    window.performanceManager.cleanup();
+  });
+});
