@@ -1,15 +1,15 @@
 /* Premium iPhone CV Variables */
 
 :root {
-    /* iPhone Frame Dimensions */
-    --iphone-width: 393px;
-    --iphone-height: 852px;
+    /* iPhone Frame Dimensions (Based on Figma Design) */
+    --iphone-width: 380px;
+    --iphone-height: 780px;
     --iphone-border-radius: 47px;
-    --iphone-border-width: 8px;
-    --screen-width: 375px;
-    --screen-height: 812px;
-    --notch-width: 154px;
-    --notch-height: 30px;
+    --iphone-border-width: 25px;
+    --screen-width: 340px;
+    --screen-height: 720px;
+    --notch-width: 126px;
+    --notch-height: 37px;
     
     /* Premium Color Palette */
     --primary-blue: #007AFF;

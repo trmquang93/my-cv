@@ -1,41 +1,41 @@
 /* iPhone CV Responsive Design */
 
-/* Larger screens - scale up iPhone */
+/* Larger screens - scale up iPhone with Figma proportions */
 @media (min-width: 1400px) {
     :root {
-        --iphone-width: 480px;
-        --iphone-height: 1040px;
-        --screen-width: 428px;
-        --screen-height: 926px;
+        --iphone-width: 400px;
+        --iphone-height: 820px;
+        --screen-width: 360px;
+        --screen-height: 760px;
     }
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
     :root {
-        --iphone-width: 450px;
-        --iphone-height: 975px;
-        --screen-width: 414px;
-        --screen-height: 896px;
+        --iphone-width: 390px;
+        --iphone-height: 800px;
+        --screen-width: 350px;
+        --screen-height: 740px;
     }
 }
 
 /* Standard desktop screens */
 @media (min-width: 1024px) and (max-width: 1199px) {
     :root {
-        --iphone-width: 420px;
-        --iphone-height: 910px;
-        --screen-width: 390px;
-        --screen-height: 844px;
+        --iphone-width: 380px;
+        --iphone-height: 780px;
+        --screen-width: 340px;
+        --screen-height: 720px;
     }
 }
 
 /* Tablet landscape */
 @media (max-width: 1023px) and (min-width: 768px) {
     :root {
-        --iphone-width: 380px;
-        --iphone-height: 823px;
-        --screen-width: 375px;
-        --screen-height: 812px;
+        --iphone-width: 406px;
+        --iphone-height: 835px;
+        --screen-width: 361px;
+        --screen-height: 790px;
     }
     
     body {

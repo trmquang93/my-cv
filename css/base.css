@@ -25,6 +25,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Enhanced Background Effects */
@@ -81,70 +83,60 @@ body::after {
     width: var(--iphone-width);
     height: var(--iphone-height);
     margin: 0 auto;
-    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
-    animation: iphoneFloat 6s ease-in-out infinite;
+    transform: perspective(1200px) rotateX(8deg) rotateY(-5deg);
+    animation: iphoneFloat 8s ease-in-out infinite;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    max-width: 100vw;
+    max-height: 100vh;
+    
+    /* iPhone frame styling */
+    background-image: url('../assets/iphone-15-pro-max-white.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @keyframes iphoneFloat {
-    0%, 100% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(0px); }
-    50% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px); }
+    0%, 100% { 
+        transform: perspective(1200px) rotateX(8deg) rotateY(-5deg) translateY(0px);
+        filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    }
+    50% { 
+        transform: perspective(1200px) rotateX(8deg) rotateY(-5deg) translateY(-15px);
+        filter: drop-shadow(0 35px 60px rgba(0, 0, 0, 0.4)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    }
 }
 
-/* iPhone Frame */
-.iphone-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--iphone-frame);
-    border-radius: var(--iphone-border-radius);
-    padding: var(--iphone-border-width);
-    box-shadow: var(--shadow-iphone);
-    
-    /* Realistic iPhone frame effects */
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    position: relative;
-}
 
-.iphone-frame::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.1) 100%);
-    border-radius: calc(var(--iphone-border-radius) + 2px);
-    z-index: -1;
-}
-
-/* iPhone Screen */
+/* iPhone Screen with Perfect Positioning */
 .iphone-screen {
-    width: 100%;
-    height: 100%;
-    background: var(--iphone-screen-bg);
-    border-radius: calc(var(--iphone-border-radius) - var(--iphone-border-width));
+    position: absolute;
+    top: 10%;
+    left: 13%;
+    width: 74%;
+    height: 80%;
+    background: #000;
+    border-radius: 45px;
     overflow: hidden;
-    position: relative;
     display: flex;
     flex-direction: column;
+    z-index: 5;
+    box-sizing: border-box;
 }
 
-/* iPhone Notch */
+/* Dynamic Island using Figma Asset */
 .iphone-notch {
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: var(--notch-width);
-    height: var(--notch-height);
-    background: var(--iphone-screen-bg);
-    border-radius: 0 0 20px 20px;
-    z-index: 10;
-    
-    /* Notch shadow */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 126px;
+    height: 37px;
+    background-image: url('../assets/dynamic-island.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 15;
 }
 
 /* Status Bar */
@@ -153,17 +145,17 @@ body::after {
     top: 0;
     left: 0;
     right: 0;
-    height: 44px;
-    background: var(--status-bar-bg);
-    backdrop-filter: var(--glass-backdrop);
+    height: 54px;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    z-index: 5;
+    padding: 0 30px;
+    z-index: 10;
     color: white;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: var(--font-weight-semibold);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui;
 }
 
 .status-left {
@@ -181,23 +173,25 @@ body::after {
 /* App Content Container */
 .app-content {
     flex: 1;
-    margin-top: 44px;
+    margin-top: 54px;
     position: relative;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    overflow: hidden; /* Ensure content stays within bounds */
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+    z-index: 6;
 }
 
 /* Scrollable Content */
 .scrollable-content {
-    height: calc(var(--screen-height) - 44px); /* Fixed height accounting for status bar */
+    height: calc(100% - 54px);
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
     
     /* Custom scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .scrollable-content::-webkit-scrollbar {
@@ -206,11 +200,12 @@ body::after {
 
 /* Page Wrapper inside iPhone */
 .page-wrapper {
-    min-height: 100%; /* Allow content to be longer than screen */
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     background: transparent;
-    padding-bottom: var(--spacing-xl); /* Add bottom padding for scrolling */
+    padding-bottom: var(--spacing-xl);
+    z-index: 7;
 }
 
 .container {

@@ -5,10 +5,11 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     position: sticky;
-    top: 44px; /* Account for status bar */
-    z-index: 100;
+    top: 54px;
+    z-index: 8;
     transition: var(--transition-normal);
     border-radius: 0;
+    margin: 0 -16px;
 }
 
 .nav-content {
