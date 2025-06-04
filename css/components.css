@@ -1,0 +1,185 @@
+/* Reusable Components */
+
+/* Card Components */
+.expertise-card,
+.job-card,
+.achievement-card,
+.education-card,
+.summary-card {
+    background: var(--surface-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition-normal);
+}
+
+.expertise-card:hover,
+.job-card:hover,
+.achievement-card:hover,
+.education-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.summary-card {
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card Headers */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.card-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.card-header h4 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    flex: 1;
+}
+
+/* Badges */
+.experience-badge {
+    background: var(--primary-blue);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.job-duration {
+    background: var(--light-gray);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Skills */
+.skill-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.skill-category {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.skill-tag {
+    background: var(--light-gray);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-fast);
+}
+
+.skill-tag.featured {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.skill-tag:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Lists */
+.achievement-list,
+.education-list {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement-list li,
+.education-list li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.achievement-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-blue);
+    font-weight: var(--font-weight-bold);
+}
+
+.education-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-blue);
+    font-weight: var(--font-weight-bold);
+}
+
+.achievement-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-blue);
+    font-weight: var(--font-weight-bold);
+}
+
+.achievement-list li strong,
+.education-list li strong,
+.achievement-card li strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Stats */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--light-gray);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-blue);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-xs);
+}

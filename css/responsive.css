@@ -1,0 +1,272 @@
+/* Responsive Design */
+
+/* Large tablets and small laptops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .expertise-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .hero-name {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    
+    .section-title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-content {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        justify-content: center;
+    }
+    
+    .nav-item {
+        font-size: 0.875rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .expertise-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline {
+        padding-left: var(--spacing-lg);
+    }
+    
+    .timeline-marker {
+        left: -var(--spacing-lg);
+        width: 20px;
+        height: 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .summary-section,
+    .expertise-section,
+    .experience-section,
+    .achievements-section,
+    .education-section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .hero {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero-name {
+        font-size: 2.25rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .hero-title {
+        font-size: 1.125rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .contact-cards {
+        gap: var(--spacing-sm);
+    }
+    
+    .contact-card {
+        padding: var(--spacing-md);
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .job-title {
+        font-size: 1.25rem;
+    }
+    
+    .company-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .timeline {
+        padding-left: var(--spacing-md);
+    }
+    
+    .timeline-marker {
+        left: -var(--spacing-md);
+        width: 16px;
+        height: 16px;
+    }
+    
+    .timeline::before {
+        left: 8px;
+    }
+    
+    .summary-card,
+    .expertise-card,
+    .job-card,
+    .achievement-card,
+    .education-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .experience-badge {
+        align-self: flex-end;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .hero-name {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .contact-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .contact-icon {
+        font-size: 20px;
+    }
+    
+    .summary-card,
+    .expertise-card,
+    .job-card,
+    .achievement-card,
+    .education-card {
+        padding: var(--spacing-md);
+    }
+    
+    .nav-item {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+    }
+    
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .page-wrapper {
+        max-width: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .nav-bar {
+        display: none;
+    }
+    
+    .hero {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .section-title,
+    .job-title,
+    .card-header h4 {
+        color: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .expertise-section,
+    .achievements-section {
+        background: var(--light-gray) !important;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .timeline-item {
+        page-break-inside: avoid;
+    }
+    
+    .job-card,
+    .expertise-card,
+    .achievement-card,
+    .education-card {
+        page-break-inside: avoid;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus States */
+.nav-item:focus,
+.contact-card:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --text-secondary: #000000;
+        --text-tertiary: #000000;
+    }
+}

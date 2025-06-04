@@ -1,0 +1,47 @@
+/* Navigation Styles */
+
+.nav-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition-normal);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.nav-item {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: var(--primary-blue);
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--primary-blue);
+    border-radius: 1px;
+}

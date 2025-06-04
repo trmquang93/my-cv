@@ -1,0 +1,228 @@
+/* Section-specific Styles */
+
+/* Summary Section */
+.summary-content p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.summary-content p strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Expertise Section */
+.expertise-section {
+    background: var(--light-gray);
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -var(--spacing-xl);
+    top: var(--spacing-lg);
+    width: 24px;
+    height: 24px;
+    background: var(--primary-blue);
+    border: 4px solid var(--surface-white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    z-index: 2;
+}
+
+.job-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.job-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-xs);
+}
+
+.company-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.company-name {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+}
+
+.achievement-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.achievement-section h5 {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Achievements Section */
+.achievements-section {
+    background: var(--light-gray);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.achievement-card {
+    text-align: center;
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+    display: block;
+}
+
+.achievement-card h4 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.achievement-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.achievement-card li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Education Section */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.education-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+    display: block;
+}
+
+.education-card h4 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-lg);
+}
+
+.education-details {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.education-details strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.coursework {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
+
+.availability-card {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.availability-card h4 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.availability-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.availability-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-xs);
+}
+
+.availability-value {
+    font-weight: var(--font-weight-semibold);
+    font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-gray);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.footer p {
+    opacity: 0.8;
+    font-style: italic;
+}

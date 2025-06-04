@@ -3,20 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quang Tran Minh - Premium CV</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Quang Tran Minh - Mobile Technical Leader & Product Management Expert with 10+ years of iOS development experience">
+    <meta name="keywords" content="iOS Developer, Mobile Technical Leader, Product Manager, Swift, SwiftUI, Apple Technologies">
+    <meta name="author" content="Quang Tran Minh">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quangtranminh.dev/">
+    <meta property="og:title" content="Quang Tran Minh - Mobile Technical Leader">
+    <meta property="og:description" content="10+ years crafting exceptional mobile experiences with Apple's design philosophy">
+    <meta property="og:image" content="https://quangtranminh.dev/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quangtranminh.dev/">
+    <meta property="twitter:title" content="Quang Tran Minh - Mobile Technical Leader">
+    <meta property="twitter:description" content="10+ years crafting exceptional mobile experiences with Apple's design philosophy">
+    <meta property="twitter:image" content="https://quangtranminh.dev/og-image.jpg">
+    
+    <title>Quang Tran Minh - Mobile Technical Leader & Product Manager</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Quang Tran Minh",
+        "jobTitle": "Mobile Technical Leader & Product Management Expert",
+        "email": "trmquang3103@gmail.com",
+        "telephone": "+84-969-993-103",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hanoi",
+            "addressCountry": "Vietnam"
+        },
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Unit Vietnam"
+        },
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Wyższa Szkoła Informatyki w Łodzi"
+        },
+        "knowsAbout": ["iOS Development", "Swift", "SwiftUI", "Product Management", "Mobile Architecture", "AI/ML"]
+    }
+    </script>
 </head>
 <body>
     <div class="page-wrapper">
         <!-- Hero Section -->
-        <section class="hero" id="hero">
+        <header class="hero" id="hero" role="banner">
             <div class="hero-content">
-                <div class="profile-avatar">
-                    <div class="avatar-ring"></div>
+                <div class="profile-avatar" role="img" aria-label="Quang Tran Minh Profile">
+                    <div class="avatar-ring" aria-hidden="true"></div>
                     <div class="avatar-inner">Q</div>
                 </div>
                 <h1 class="hero-name">Quang Tran Minh</h1>
@@ -24,36 +83,36 @@
                 <p class="hero-description">
                     10+ years crafting exceptional mobile experiences with Apple's design philosophy
                 </p>
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <div class="contact-icon">📧</div>
+                <address class="contact-cards">
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy email address">
+                        <div class="contact-icon" aria-hidden="true">📧</div>
                         <div class="contact-info">
                             <span class="contact-label">Email</span>
                             <span class="contact-value">trmquang3103@gmail.com</span>
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">📱</div>
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy phone number">
+                        <div class="contact-icon" aria-hidden="true">📱</div>
                         <div class="contact-info">
                             <span class="contact-label">Phone</span>
                             <span class="contact-value">+84-969-993-103</span>
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">📍</div>
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Copy location">
+                        <div class="contact-icon" aria-hidden="true">📍</div>
                         <div class="contact-info">
                             <span class="contact-label">Location</span>
                             <span class="contact-value">Hanoi, Vietnam</span>
                         </div>
                     </div>
-                </div>
+                </address>
             </div>
-        </section>
+        </header>
 
         <!-- Navigation -->
-        <nav class="nav-bar" id="nav">
+        <nav class="nav-bar" id="nav" role="navigation" aria-label="Main navigation">
             <div class="nav-content">
-                <a href="#hero" class="nav-item active" data-section="hero">Overview</a>
+                <a href="#hero" class="nav-item active" data-section="hero" aria-current="page">Overview</a>
                 <a href="#expertise" class="nav-item" data-section="expertise">Expertise</a>
                 <a href="#experience" class="nav-item" data-section="experience">Experience</a>
                 <a href="#achievements" class="nav-item" data-section="achievements">Impact</a>
@@ -62,10 +121,10 @@
         </nav>
 
         <!-- Summary Section -->
-        <section class="summary-section" id="summary">
+        <section class="summary-section" id="summary" aria-labelledby="summary-title">
             <div class="container">
                 <div class="summary-card">
-                    <h3 class="section-title">Executive Summary</h3>
+                    <h3 id="summary-title" class="section-title">Executive Summary</h3>
                     <div class="summary-content">
                         <p>
                             <strong>Experienced Mobile Technical Leader with 10+ years</strong> of comprehensive mobile development expertise and proven product management capabilities. Successfully led cross-functional teams in delivering complex mobile ecosystems and super applications with <strong>500K+ combined downloads</strong>.
@@ -73,21 +132,21 @@
                         <p>
                             Specialized in architecting secure, scalable mobile solutions with deep expertise in product strategy, technical leadership, and business-driven development. Expert in Apple's entire ecosystem and AI-powered applications with proven track record in <strong>managing multiple concurrent projects</strong> and driving product decisions from conception to market success.
                         </p>
-                        <div class="summary-stats">
+                        <div class="summary-stats" role="group" aria-label="Career statistics">
                             <div class="stat-item">
-                                <div class="stat-number">10+</div>
+                                <div class="stat-number" aria-label="10 plus years">10+</div>
                                 <div class="stat-label">Years Experience</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">500K+</div>
+                                <div class="stat-number" aria-label="500 thousand plus downloads">500K+</div>
                                 <div class="stat-label">Downloads</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">20+</div>
+                                <div class="stat-number" aria-label="20 plus team members">20+</div>
                                 <div class="stat-label">Team Members</div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-number">4.5+</div>
+                                <div class="stat-number" aria-label="4.5 plus app store rating">4.5+</div>
                                 <div class="stat-label">App Store Rating</div>
                             </div>
                         </div>
@@ -97,45 +156,45 @@
         </section>
 
         <!-- Expertise Section -->
-        <section class="expertise-section" id="expertise">
+        <section class="expertise-section" id="expertise" aria-labelledby="expertise-title">
             <div class="container">
-                <h3 class="section-title">Core Technical Expertise</h3>
+                <h3 id="expertise-title" class="section-title">Core Technical Expertise</h3>
                 <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <div class="card-header">
-                            <div class="card-icon">📱</div>
+                    <article class="expertise-card">
+                        <header class="card-header">
+                            <div class="card-icon" aria-hidden="true">📱</div>
                             <h4>Mobile Development & Architecture</h4>
                             <span class="experience-badge">10+ Years</span>
-                        </div>
+                        </header>
                         <div class="card-content">
                             <div class="skill-group">
-                                <span class="skill-category">Languages</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Swift</span>
-                                    <span class="skill-tag">Objective-C</span>
-                                    <span class="skill-tag">C/C++</span>
-                                    <span class="skill-tag">JavaScript</span>
+                                <span class="skill-category" role="heading" aria-level="5">Languages</span>
+                                <div class="skill-tags" role="group" aria-label="Programming languages">
+                                    <button class="skill-tag" type="button" aria-pressed="false">Swift</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">Objective-C</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">C/C++</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">JavaScript</button>
                                 </div>
                             </div>
                             <div class="skill-group">
-                                <span class="skill-category">Modern iOS</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag featured">SwiftUI</span>
-                                    <span class="skill-tag featured">Swift Concurrency</span>
-                                    <span class="skill-tag">Combine</span>
+                                <span class="skill-category" role="heading" aria-level="5">Modern iOS</span>
+                                <div class="skill-tags" role="group" aria-label="Modern iOS technologies">
+                                    <button class="skill-tag featured" type="button" aria-pressed="false">SwiftUI</button>
+                                    <button class="skill-tag featured" type="button" aria-pressed="false">Swift Concurrency</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">Combine</button>
                                 </div>
                             </div>
                             <div class="skill-group">
-                                <span class="skill-category">Architecture</span>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">MVVM</span>
-                                    <span class="skill-tag">MVP</span>
-                                    <span class="skill-tag">VIPER</span>
-                                    <span class="skill-tag">Clean Architecture</span>
+                                <span class="skill-category" role="heading" aria-level="5">Architecture</span>
+                                <div class="skill-tags" role="group" aria-label="Architecture patterns">
+                                    <button class="skill-tag" type="button" aria-pressed="false">MVVM</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">MVP</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">VIPER</button>
+                                    <button class="skill-tag" type="button" aria-pressed="false">Clean Architecture</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
                     <div class="expertise-card">
                         <div class="card-header">
@@ -393,6 +452,15 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Skip to main content link for accessibility -->
+    <a href="#summary" class="skip-link">Skip to main content</a>
+    
+    <!-- Screen reader only content -->
+    <div class="sr-only">
+        <h2>Page Structure</h2>
+        <p>This page contains information about Quang Tran Minh, a Mobile Technical Leader and Product Manager. The page is organized into sections including overview, expertise, experience, achievements, and educational background.</p>
+    </div>
 </body>
 </html>
