@@ -1,732 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quang Tran Minh - CV | Xcode Style</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/widgets.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=SF+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title>Quang Tran Minh - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --launchpad-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dock-bg: rgba(255, 255, 255, 0.15);
+            --dock-border: rgba(255, 255, 255, 0.2);
+            --app-hover: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --icon-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--launchpad-bg);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dynamic Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--launchpad-bg);
+            z-index: -2;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Launchpad Grid */
+        .launchpad {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            grid-template-columns: repeat(6, 120px);
+            grid-template-rows: repeat(4, 140px);
+            gap: 40px;
+            padding: 40px;
+            z-index: 5;
+        }
+
+        /* App Icon Base */
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            box-shadow: var(--icon-shadow);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: scaleIn 0.8s ease forwards;
+            opacity: 0;
+            transform: scale(0.5);
+            overflow: visible;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .app-icon:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .app-icon:active {
+            transform: scale(0.95);
+        }
+
+        /* Xcode Icon - Position at center */
+        .xcode-icon {
+            grid-column: 3;
+            grid-row: 2;
+            background: transparent;
+            animation-delay: 0.5s;
+            position: relative;
+            overflow: visible;
+            padding: 0;
+        }
+
+        .xcode-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+            background: transparent;
+        }
+
+        .xcode-icon .icon-symbol {
+            display: none; /* Hide emoji when using image */
+        }
+
+        /* Safari Icon */
+        .safari-icon {
+            grid-column: 2;
+            grid-row: 2;
+            background: transparent;
+            animation-delay: 0.3s;
+            padding: 0;
+        }
+
+        .safari-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .safari-icon .icon-symbol {
+            display: none; /* Hide emoji when using SVG */
+        }
+
+        /* Finder Icon */
+        .finder-icon {
+            grid-column: 4;
+            grid-row: 2;
+            background: linear-gradient(135deg, #4A9FFF 0%, #0066FF 100%);
+            animation-delay: 0.7s;
+        }
+
+        /* Terminal Icon */
+        .terminal-icon {
+            grid-column: 1;
+            grid-row: 3;
+            background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
+            animation-delay: 0.9s;
+        }
+
+        /* VS Code Icon */
+        .vscode-icon {
+            grid-column: 5;
+            grid-row: 2;
+            background: linear-gradient(135deg, #007ACC 0%, #005A9E 100%);
+            animation-delay: 1.1s;
+        }
+
+        /* GitHub Icon */
+        .github-icon {
+            grid-column: 3;
+            grid-row: 3;
+            background: linear-gradient(135deg, #333 0%, #24292e 100%);
+            animation-delay: 1.3s;
+            padding: 20px;
+        }
+
+        .github-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #ffffff;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .github-icon .icon-symbol {
+            display: none; /* Hide emoji when using SVG */
+        }
+
+        /* iOS CV Icon */
+        .ios-cv-icon {
+            grid-column: 2;
+            grid-row: 3;
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A52 100%);
+            animation-delay: 1.5s;
+        }
+
+        /* Traditional CV Icon */
+        .traditional-cv-icon {
+            grid-column: 4;
+            grid-row: 3;
+            background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
+            animation-delay: 1.7s;
+        }
+
+        /* Email Icon */
+        .email-icon {
+            grid-column: 5;
+            grid-row: 3;
+            background: transparent;
+            animation-delay: 1.9s;
+            padding: 0;
+        }
+
+        .email-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .email-icon .icon-symbol {
+            display: none; /* Hide emoji when using SVG */
+        }
+
+        .icon-symbol {
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* App Label */
+        .app-label {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            opacity: 1;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .app-icon:hover .app-label {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        /* Dock */
+        .dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: var(--dock-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--dock-border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            animation: slideUp 1s ease 1.5s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .dock-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 1.5rem;
+        }
+
+        .dock-item:hover {
+            transform: scale(1.2) translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Loading overlay for page transition */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .launchpad {
+                grid-template-columns: repeat(5, 110px);
+                gap: 30px;
+            }
+            
+            .app-icon {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+
+            .launchpad {
+                grid-template-columns: repeat(4, 100px);
+                grid-template-rows: repeat(3, 120px);
+                gap: 25px;
+                padding: 20px;
+            }
+
+            .app-icon {
+                width: 100px;
+                height: 100px;
+                border-radius: 18px;
+            }
+
+            .xcode-icon {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .safari-icon {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .finder-icon {
+                grid-column: 3;
+                grid-row: 1;
+            }
+
+            .terminal-icon {
+                grid-column: 4;
+                grid-row: 1;
+            }
+
+            .vscode-icon {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .github-icon {
+                grid-column: 3;
+                grid-row: 2;
+            }
+
+            .ios-cv-icon {
+                grid-column: 4;
+                grid-row: 2;
+            }
+
+            .traditional-cv-icon {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .email-icon {
+                grid-column: 2;
+                grid-row: 3;
+            }
+
+            .icon-symbol {
+                font-size: 2rem !important;
+            }
+
+            .xcode-icon {
+                padding: 0;
+            }
+
+            .xcode-icon img {
+                border-radius: 12px;
+            }
+
+            .app-label {
+                font-size: 0.75rem;
+                bottom: -30px;
+            }
+
+            .github-icon {
+                padding: 16px;
+            }
+
+            .email-icon {
+                padding: 0;
+            }
+        }
+
+        /* Particles Effect */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float-particle 10s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Window Chrome -->
-    <div class="window-chrome">
-        <div class="traffic-lights">
-            <div class="traffic-light close"></div>
-            <div class="traffic-light minimize"></div>
-            <div class="traffic-light maximize"></div>
+    <div class="background"></div>
+    
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Quang Tran Minh</h1>
+        <p>Mobile Technical Leader & Product Expert</p>
+    </div>
+
+    <!-- Launchpad Grid -->
+    <div class="launchpad">
+        <!-- Safari -->
+        <div class="app-icon safari-icon" onclick="openApp('safari')">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="safariGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#23D9FD"/>
+                        <stop offset="100%" style="stop-color:#1F63F0"/>
+                    </linearGradient>
+                </defs>
+                <path fill="#FFFFFF" d="M63.6,5c9,0,13.5,0,18.4,1.5c5.3,1.9,9.5,6.1,11.4,11.4C95,22.8,95,27.4,95,36.4v27.2c0,9,0,13.5-1.5,18.4c-1.9,5.3-6.1,9.5-11.4,11.4c-5,1.6-9.5,1.6-18.5,1.6H36.4c-9,0-13.5,0-18.4-1.5c-5.4-2-9.5-6.1-11.5-11.5C5,77.2,5,72.7,5,63.6V36.4c0-9,0-13.5,1.5-18.4c2-5.3,6.1-9.5,11.5-11.4C22.8,5,27.3,5,36.4,5H63.6z"/>
+                <circle fill="url(#safariGradient)" cx="50" cy="50" r="39"/>
+                <path fill="#FFFFFF" d="M49.2,14H50v6.7h-0.7L49.2,14L49.2,14z M55.5,14.5l0.7,0.1L55,21.2l-0.7-0.1L55.5,14.5L55.5,14.5z M61.6,16.1l0.7,0.3L60,22.7l-0.7-0.3L61.6,16.1L61.6,16.1z M67.3,18.7l0.6,0.4l-3.4,5.8l-0.6-0.4L67.3,18.7L67.3,18.7z M72.5,22.2l0.6,0.5l-4.3,5.2l-0.6-0.5L72.5,22.2L72.5,22.2z M76.9,26.6l0.5,0.6l-5.2,4.3l-0.5-0.6L76.9,26.6L76.9,26.6z M80.6,31.7l0.4,0.6l-5.8,3.4l-0.4-0.6L80.6,31.7L80.6,31.7z M83.3,37.4l0.3,0.7l-6.3,2.3L77,39.7L83.3,37.4L83.3,37.4z M85,43.4l0.1,0.7l-6.6,1.2l-0.1-0.7L85,43.4L85,43.4z M85.6,49.6v0.7h-6.7v-0.7H85.6L85.6,49.6z M85.1,55.9L85,56.6l-6.6-1.2l0.1-0.7L85.1,55.9L85.1,55.9z M83.6,62l-0.3,0.7L77,60.4l0.3-0.7L83.6,62L83.6,62z M81,67.7l-0.4,0.6L74.7,65l0.4-0.6L81,67.7L81,67.7z M77.4,72.9l-0.5,0.6l-5.2-4.3l0.5-0.6L77.4,72.9L77.4,72.9z M73,77.3l-0.6,0.5l-4.3-5.2l0.6-0.5L73,77.3L73,77.3z M67.9,81l-0.6,0.4l-3.4-5.8l0.6-0.4L67.9,81L67.9,81z M62.3,83.7L61.6,84l-2.3-6.3l0.7-0.3L62.3,83.7L62.3,83.7z M56.2,85.4l-0.7,0.1l-1.2-6.6l0.7-0.1L56.2,85.4L56.2,85.4z M50,86h-0.7v-6.7H50V86L50,86z M43.7,85.5L43,85.4l1.2-6.6l0.7,0.1L43.7,85.5L43.7,85.5z M37.7,84L37,83.7l2.3-6.3l0.7,0.3L37.7,84L37.7,84z M31.9,81.4L31.3,81l3.4-5.8l0.6,0.4L31.9,81.4L31.9,81.4z M26.8,77.8l-0.6-0.5l4.3-5.2l0.6,0.5L26.8,77.8L26.8,77.8z M22.3,73.4l-0.5-0.6l5.2-4.3l0.5,0.6L22.3,73.4L22.3,73.4z M18.6,68.3l-0.4-0.6l5.8-3.4l0.4,0.6L18.6,68.3L18.6,68.3z M15.9,62.7L15.7,62l6.3-2.3l0.3,0.7L15.9,62.7L15.9,62.7z M14.2,56.6l-0.1-0.7l6.6-1.2l0.1,0.7L14.2,56.6L14.2,56.6z M13.6,50.4v-0.7h6.7v0.7H13.6L13.6,50.4z M14.1,44.1l0.1-0.7l6.6,1.2l-0.1,0.7L14.1,44.1L14.1,44.1z M15.7,38.1l0.3-0.7l6.3,2.3L22,40.4L15.7,38.1L15.7,38.1z M18.3,32.3l0.4-0.6l5.8,3.4l-0.4,0.6L18.3,32.3L18.3,32.3z M21.8,27.2l0.5-0.6l5.2,4.3L27,31.5L21.8,27.2L21.8,27.2z M26.2,22.7l0.6-0.5l4.3,5.2l-0.6,0.5L26.2,22.7L26.2,22.7z M31.3,19l0.6-0.4l3.4,5.8l-0.6,0.4L31.3,19L31.3,19z M36.9,16.3l0.7-0.3l2.3,6.3l-0.7,0.3L36.9,16.3L36.9,16.3z M43,14.6l0.7-0.1l1.2,6.6l-0.7,0.1L43,14.6L43,14.6z"/>
+                <g transform="translate(50, 50) rotate(45) translate(-50, -50) translate(46.5, 24)">
+                    <polygon fill="#FFFFFF" points="7,26 1.5,26 6.5,64.9 7,26 1.5,26"/>
+                    <polygon fill="#FF1414" points="1.5,26 6.4,-13 7,26"/>
+                </g>
+            </svg>
+            <div class="icon-symbol">🧭</div>
+            <div class="app-label">Safari</div>
         </div>
-        <div class="window-title">
-            <span class="project-name">Quang_Tran_Minh.xcworkspace</span>
+
+        <!-- VS Code -->
+        <div class="app-icon vscode-icon" onclick="openApp('vscode')">
+            <div class="icon-symbol">💻</div>
+            <div class="app-label">VS Code</div>
         </div>
-        <div class="window-controls">
-            <button class="control-btn" id="downloadToggle" title="Export CV">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                </svg>
-            </button>
-            <div class="download-badge">PDF</div>
-            <button class="control-btn" id="themeToggle" title="Toggle Theme">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 18c-.89 0-1.74-.19-2.5-.54C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.46C10.26 6.19 11.11 6 12 6a6 6 0 0 1 0 12z" />
-                </svg>
-            </button>
+
+        <!-- Xcode (Main CV) -->
+        <div class="app-icon xcode-icon" onclick="openXcode()">
+            <img src="assets/xcode-icon.png" alt="Xcode">
+            <div class="icon-symbol">⚡</div>
+            <div class="app-label">Xcode CV</div>
+        </div>
+
+        <!-- Finder -->
+        <div class="app-icon finder-icon" onclick="openApp('finder')">
+            <div class="icon-symbol">📁</div>
+            <div class="app-label">Finder</div>
+        </div>
+
+        <!-- Terminal -->
+        <div class="app-icon terminal-icon" onclick="openApp('terminal')">
+            <div class="icon-symbol">⌘</div>
+            <div class="app-label">Terminal</div>
+        </div>
+
+        <!-- iOS CV -->
+        <div class="app-icon ios-cv-icon" onclick="openApp('ios-cv')">
+            <div class="icon-symbol">📱</div>
+            <div class="app-label">iOS CV</div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="app-icon github-icon" onclick="openApp('github')">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"/>
+            </svg>
+            <div class="icon-symbol">🐙</div>
+            <div class="app-label">GitHub</div>
+        </div>
+
+        <!-- Traditional CV -->
+        <div class="app-icon traditional-cv-icon" onclick="openApp('traditional-cv')">
+            <div class="icon-symbol">📄</div>
+            <div class="app-label">Traditional CV</div>
+        </div>
+
+        <!-- Email -->
+        <div class="app-icon email-icon" onclick="openApp('email')">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="mailBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1E51EE"/>
+                        <stop offset="100%" style="stop-color:#19E6FF"/>
+                    </linearGradient>
+                </defs>
+                <path fill="url(#mailBg)" d="M63.6,5c9,0,13.5,0,18.4,1.5c5.3,1.9,9.5,6.1,11.4,11.4C95,22.8,95,27.4,95,36.4v27.2c0,9,0,13.5-1.5,18.4c-1.9,5.3-6.1,9.5-11.4,11.4C77.2,95,72.6,95,63.6,95H36.4c-9,0-13.5,0-18.4-1.5C12.7,91.5,8.5,87.4,6.6,82C5,77.2,5,72.7,5,63.6V36.4c0-9,0-13.5,1.5-18.4C8.5,12.7,12.7,8.5,18,6.6C22.8,5,27.4,5,36.4,5H63.6z"/>
+                <path fill="#FFFFFF" d="M78.9,69.5c-0.1,0-0.3,0.1-0.4,0.1h-57c-0.1,0-0.3,0-0.4-0.1l0,0l17.8-17.8l3.8,3.9c4.1,4.2,10.6,4.2,14.7,0l3.8-3.9L78.9,69.5L78.9,69.5L78.9,69.5z M80,67.6V32.3c0-0.2,0-0.4-0.1-0.5C79.8,32,62.2,50.2,62.2,50.2l17.8,17.8C80,67.8,80,67.7,80,67.6L80,67.6z M20,67.7V32.5c0-0.2,0-0.4,0.1-0.5c0.1,0.2,17.7,18.4,17.7,18.4L20.1,68.1C20,68,20,67.8,20,67.7L20,67.7z M79,30.6L56.3,53.8c-3.5,3.5-9.1,3.5-12.5,0L21.1,30.6C21,30.5,79,30.6,79,30.6L79,30.6z"/>
+            </svg>
+            <div class="icon-symbol">📧</div>
+            <div class="app-label">Contact</div>
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="xcode-container">
-        <!-- Sidebar Navigator -->
-        <div class="sidebar">
-            <div class="navigator-header">
-                <h3>Navigator</h3>
-                <div class="navigator-tabs">
-                    <button class="nav-tab active" data-tab="project">📁</button>
-                    <button class="nav-tab" data-tab="search">🔍</button>
-                    <button class="nav-tab" data-tab="issues">⚠️</button>
-                </div>
-            </div>
-
-            <div class="navigator-content">
-                <!-- Project Navigator -->
-                <div class="nav-panel active" id="project-nav">
-                    <div class="file-tree">
-                        <div class="folder-item expanded">
-                            <span class="folder-icon">📁</span>
-                            <span class="folder-name">QuangTranMinh_CV</span>
-                            <div class="folder-contents">
-                                <div class="file-item active" data-file="personal-info">
-                                    <span class="file-icon">👤</span>
-                                    <span class="file-name">PersonalInfo.swift</span>
-                                </div>
-                                <div class="file-item" data-file="experience">
-                                    <span class="file-icon">💼</span>
-                                    <span class="file-name">WorkExperience.swift</span>
-                                </div>
-                                <div class="file-item" data-file="skills">
-                                    <span class="file-icon">⚡</span>
-                                    <span class="file-name">TechnicalSkills.swift</span>
-                                </div>
-                                <div class="file-item" data-file="projects">
-                                    <span class="file-icon">🚀</span>
-                                    <span class="file-name">KeyProjects.swift</span>
-                                </div>
-                                <div class="file-item" data-file="education">
-                                    <span class="file-icon">🎓</span>
-                                    <span class="file-name">Education.swift</span>
-                                </div>
-                                <div class="file-item" data-file="git-history">
-                                    <span class="file-icon">🌳</span>
-                                    <span class="file-name">CareerHistory.git</span>
-                                </div>
-                                <div class="file-item" data-file="contact">
-                                    <span class="file-icon">📞</span>
-                                    <span class="file-name">ContactInfo.swift</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Search Navigator -->
-                <div class="nav-panel" id="search-nav">
-                    <div class="search-container">
-                        <input type="text" placeholder="Search in project..." class="search-input">
-                        <div class="search-results">
-                            <div class="search-result">
-                                <span class="result-file">PersonalInfo.swift</span>
-                                <span class="result-line">Line 12: iOS Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Issues Navigator -->
-                <div class="nav-panel" id="issues-nav">
-                    <div class="issues-list">
-                        <div class="issue-item success">
-                            <span class="issue-icon">✅</span>
-                            <span class="issue-text">All skills validated</span>
-                        </div>
-                        <div class="issue-item info">
-                            <span class="issue-icon">ℹ️</span>
-                            <span class="issue-text">Portfolio ready for deployment</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Dock -->
+    <div class="dock">
+        <div class="dock-item xcode-dock-item" onclick="openXcode()" title="Xcode CV">
+            <img src="assets/xcode-icon.png" alt="Xcode" style="width: 80%; height: 80%; object-fit: contain; border-radius: 8px;">
         </div>
-
-        <!-- Main Editor -->
-        <div class="editor-container">
-            <!-- Tab Bar -->
-            <div class="tab-bar">
-                <div class="tab active" data-file="personal-info">
-                    <span class="tab-icon">👤</span>
-                    <span class="tab-name">PersonalInfo.swift</span>
-                    <button class="tab-close">×</button>
-                </div>
-            </div>
-
-            <!-- Code Editor -->
-            <div class="code-editor">
-                <div class="line-numbers">
-                    <div class="line-number">1</div>
-                    <div class="line-number">2</div>
-                    <div class="line-number">3</div>
-                    <div class="line-number">4</div>
-                    <div class="line-number">5</div>
-                    <div class="line-number">6</div>
-                    <div class="line-number">7</div>
-                    <div class="line-number">8</div>
-                    <div class="line-number">9</div>
-                    <div class="line-number">10</div>
-                    <div class="line-number">11</div>
-                    <div class="line-number">12</div>
-                    <div class="line-number">13</div>
-                    <div class="line-number">14</div>
-                    <div class="line-number">15</div>
-                    <div class="line-number">16</div>
-                    <div class="line-number">17</div>
-                    <div class="line-number">18</div>
-                    <div class="line-number">19</div>
-                    <div class="line-number">20</div>
-                </div>
-
-                <div class="code-content">
-                    <!-- Personal Info Content -->
-                    <div class="file-content active" id="personal-info-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-<span class="keyword">import</span> <span class="type">UIKit</span>
-
-<span class="comment">// MARK: - Personal Information</span>
-<span class="keyword">class</span> <span class="type">PersonalInfo</span>: <span class="type">Developer</span> {
-    
-    <span class="keyword">let</span> <span class="property">fullName</span> = <span class="string">"Quang Tran Minh"</span>
-    <span class="keyword">let</span> <span class="property">title</span> = <span class="string">"Mobile Technical Leader & Product Management Expert"</span>
-    <span class="keyword">let</span> <span class="property">location</span> = <span class="string">"Hanoi, Vietnam"</span>
-    <span class="keyword">let</span> <span class="property">experience</span> = <span class="number">10</span> <span class="comment">// years</span>
-    
-    <span class="comment">// Contact Information</span>
-    <span class="keyword">let</span> <span class="property">email</span> = <span class="string">"trmquang3103@gmail.com"</span>
-    <span class="keyword">let</span> <span class="property">phone</span> = <span class="string">"+84-969-993-103"</span>
-    <span class="keyword">let</span> <span class="property">workingHours</span> = <span class="string">"Flexible"</span>
-    
-    <span class="comment">// Professional Summary</span>
-    <span class="keyword">func</span> <span class="function">getSummary</span>() -> <span class="type">String</span> {
-        <span class="keyword">return</span> <span class="string">"""
-        Experienced Mobile Technical Leader with 10+ years of comprehensive 
-        mobile development expertise and proven product management capabilities. 
-        Successfully led cross-functional teams in delivering complex mobile 
-        ecosystems and super applications with 500K+ combined downloads.
-        """</span>
-    }
-}</pre>
-                    </div>
-
-                    <!-- Experience Content -->
-                    <div class="file-content" id="experience-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-
-<span class="comment">// MARK: - Work Experience</span>
-<span class="keyword">struct</span> <span class="type">WorkExperience</span> {
-    
-    <span class="comment">// Current Position</span>
-    <span class="keyword">let</span> <span class="property">currentRole</span> = <span class="type">Position</span>(
-        title: <span class="string">"Senior iOS Developer"</span>,
-        company: <span class="string">"CBTW"</span>,
-        duration: <span class="string">"2+ years"</span>,
-        responsibilities: [
-            <span class="string">"Developed iOS application for Shahid streaming platform"</span>,
-            <span class="string">"Collaborated in international environment with 10-person team"</span>,
-            <span class="string">"Contributed to architectural decisions for scalable streaming solutions"</span>,
-            <span class="string">"Worked with cross-functional teams for seamless user experiences"</span>,
-            <span class="string">"Excelled in remote collaboration and distributed workflows"</span>
-        ]
-    )
-    
-    <span class="comment">// Previous Positions</span>
-    <span class="keyword">let</span> <span class="property">previousRoles</span> = [
-        <span class="type">Position</span>(
-            title: <span class="string">"Product Manager & Senior iOS Developer"</span>,
-            company: <span class="string">"Unit Vietnam"</span>,
-            duration: <span class="string">"7 years"</span>,
-            responsibilities: [
-                <span class="string">"Managed 5+ concurrent mobile projects simultaneously"</span>,
-                <span class="string">"Led product strategy development for multiple iOS applications"</span>,
-                <span class="string">"Coordinated cross-functional teams of 20+ developers"</span>,
-                <span class="string">"Delivered 10+ iOS applications with 4.5+ App Store ratings"</span>,
-                <span class="string">"Architected secure solutions handling 100K+ concurrent users"</span>
-            ]
-        ),
-        <span class="type">Position</span>(
-            title: <span class="string">"iOS Developer"</span>,
-            company: <span class="string">"LBPro Poland"</span>,
-            duration: <span class="string">"1+ years"</span>,
-            responsibilities: [
-                <span class="string">"Developed multiple iOS applications from concept to release"</span>,
-                <span class="string">"Implemented security features and push notifications"</span>
-            ]
-        )
-    ]
-}</pre>
-                    </div>
-
-                    <!-- Skills Content -->
-                    <div class="file-content" id="skills-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-
-<span class="comment">// MARK: - Technical Skills</span>
-<span class="keyword">enum</span> <span class="type">TechnicalSkills</span> {
-    
-    <span class="comment">// Mobile Development (10+ Years)</span>
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">languages</span> = [<span class="string">"Swift"</span>, <span class="string">"Objective-C"</span>, <span class="string">"C/C++"</span>, <span class="string">"JavaScript"</span>]
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">modernIOS</span> = [<span class="string">"SwiftUI"</span>, <span class="string">"Swift Concurrency"</span>, <span class="string">"Combine"</span>]
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">architecture</span> = [<span class="string">"MVVM"</span>, <span class="string">"MVP"</span>, <span class="string">"VIPER"</span>, <span class="string">"Clean Architecture"</span>]
-    
-    <span class="comment">// AI/ML & Advanced Technologies</span>
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">aiFrameworks</span> = [<span class="string">"Core ML"</span>, <span class="string">"Vision Framework"</span>, <span class="string">"NLP"</span>]
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">security</span> = [<span class="string">"Biometric Authentication"</span>, <span class="string">"Fraud Detection"</span>]
-    
-    <span class="comment">// Product Management</span>
-    <span class="keyword">static</span> <span class="keyword">let</span> <span class="property">productSkills</span> = [
-        <span class="string">"Product Strategy"</span>,
-        <span class="string">"Market Analysis"</span>, 
-        <span class="string">"Roadmap Planning"</span>,
-        <span class="string">"Stakeholder Management"</span>
-    ]
-    
-    <span class="comment">// Achievement Metrics</span>
-    <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">getMetrics</span>() -> [<span class="type">String</span>: <span class="type">Any</span>] {
-        <span class="keyword">return</span> [
-            <span class="string">"appsDelivered"</span>: <span class="number">10</span>,
-            <span class="string">"averageRating"</span>: <span class="number">4.5</span>,
-            <span class="string">"concurrentUsers"</span>: <span class="string">"100K+"</span>,
-            <span class="string">"crashRate"</span>: <span class="string">"<0.5%"</span>
-        ]
-    }
-}</pre>
-                    </div>
-
-                    <!-- Projects Content -->
-                    <div class="file-content" id="projects-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-
-<span class="comment">// MARK: - Key Projects</span>
-<span class="keyword">class</span> <span class="type">KeyProjects</span> {
-    
-    <span class="comment">// Project Achievements</span>
-    <span class="keyword">let</span> <span class="property">totalDownloads</span> = <span class="string">"500K+"</span>
-    <span class="keyword">let</span> <span class="property">concurrentProjects</span> = <span class="number">5</span>
-    <span class="keyword">let</span> <span class="property">teamSize</span> = <span class="number">20</span>
-    
-    <span class="comment">// Leadership Highlights</span>
-    <span class="keyword">func</span> <span class="function">getLeadershipAchievements</span>() -> [<span class="type">String</span>] {
-        <span class="keyword">return</span> [
-            <span class="string">"Led cross-functional teams of 20+ developers"</span>,
-            <span class="string">"Managed 5+ concurrent mobile projects"</span>,
-            <span class="string">"Delivered complex mobile ecosystems"</span>,
-            <span class="string">"Coordinated international stakeholder relationships"</span>
-        ]
-    }
-    
-    <span class="comment">// Technical Achievements</span>
-    <span class="keyword">func</span> <span class="function">getTechnicalAchievements</span>() -> [<span class="type">String</span>] {
-        <span class="keyword">return</span> [
-            <span class="string">"Architected secure solutions for 100K+ users"</span>,
-            <span class="string">"Implemented AI-driven security features"</span>,
-            <span class="string">"Migrated legacy Objective-C to modern Swift"</span>,
-            <span class="string">"Achieved <0.5% crash rates"</span>
-        ]
-    }
-    
-    <span class="comment">// Business Impact</span>
-    <span class="keyword">func</span> <span class="function">getBusinessImpact</span>() -> [<span class="type">String</span>] {
-        <span class="keyword">return</span> [
-            <span class="string">"Delivered projects on time and within budget"</span>,
-            <span class="string">"Achieved 4.5+ App Store ratings consistently"</span>,
-            <span class="string">"Drove product roadmap decisions"</span>,
-            <span class="string">"Balanced technical feasibility with business objectives"</span>
-        ]
-    }
-}</pre>
-                    </div>
-
-                    <!-- Education Content -->
-                    <div class="file-content" id="education-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-
-<span class="comment">// MARK: - Education & Qualifications</span>
-<span class="keyword">struct</span> <span class="type">Education</span> {
-    
-    <span class="comment">// Formal Education</span>
-    <span class="keyword">let</span> <span class="property">degree</span> = <span class="type">Degree</span>(
-        title: <span class="string">"Bachelor of Computer Science"</span>,
-        institution: <span class="string">"Wyższa Szkoła Informatyki w Łodzi"</span>,
-        specialization: <span class="string">"Information Technology"</span>,
-        period: <span class="string">"2013-2017"</span>,
-        grade: <span class="string">"Engineer"</span>
-    )
-    
-    <span class="comment">// Relevant Coursework</span>
-    <span class="keyword">let</span> <span class="property">coursework</span> = [
-        <span class="string">"Data Structures & Algorithms"</span>,
-        <span class="string">"Software Engineering"</span>,
-        <span class="string">"Mobile App Development"</span>,
-        <span class="string">"Computer Networks"</span>,
-        <span class="string">"Project Management"</span>,
-        <span class="string">"Business Analysis"</span>
-    ]
-    
-    <span class="comment">// Professional Development</span>
-    <span class="keyword">let</span> <span class="property">continuousLearning</span> = [
-        <span class="string">"Apple Developer Program Member"</span>,
-        <span class="string">"iOS Development Best Practices"</span>,
-        <span class="string">"Product Management Methodologies"</span>,
-        <span class="string">"Agile & Scrum Practices"</span>
-    ]
-    
-    <span class="comment">// Remote Work Excellence</span>
-    <span class="keyword">let</span> <span class="property">remoteWorkSkills</span> = [
-        <span class="string">"3+ years remote development experience"</span>,
-        <span class="string">"Fluent English communication"</span>,
-        <span class="string">"Expert in asynchronous communication"</span>,
-        <span class="string">"Cross-cultural collaboration expertise"</span>
-    ]
-}</pre>
-                    </div>
-
-                    <!-- Git History Content -->
-                    <div class="file-content" id="git-history-content">
-                        <div class="git-terminal">
-                            <div class="terminal-header">
-                                <div class="terminal-controls">
-                                    <span class="terminal-control close"></span>
-                                    <span class="terminal-control minimize"></span>
-                                    <span class="terminal-control maximize"></span>
-                                </div>
-                                <div class="terminal-title">Terminal - Career Timeline</div>
-                            </div>
-                            <div class="terminal-content">
-                                <div class="terminal-line">
-                                    <span class="prompt">quang@career-journey:~$</span>
-                                    <span class="command">git log --oneline --graph --all</span>
-                                </div>
-                                <div class="git-graph">
-                                    <div class="commit-line current">
-                                        <span class="graph">*</span>
-                                        <span class="hash">a7f3b21</span>
-                                        <span class="message">Senior iOS Developer at CBTW - Shahid Platform</span>
-                                        <span class="branch">(HEAD -> main, origin/main)</span>
-                                        <span class="date">2024-present</span>
-                                    </div>
-                                    <div class="commit-line">
-                                        <span class="graph">|</span>
-                                    </div>
-                                    <div class="commit-line major">
-                                        <span class="graph">*</span>
-                                        <span class="hash">d4c2a90</span>
-                                        <span class="message">Product Manager & Senior iOS Developer at Unit Vietnam</span>
-                                        <span class="branch">(tag: leadership-era)</span>
-                                        <span class="date">2017-2024</span>
-                                    </div>
-                                    <div class="commit-line">
-                                        <span class="graph">|\</span>
-                                    </div>
-                                    <div class="commit-line achievement">
-                                        <span class="graph">| *</span>
-                                        <span class="hash">8b5e1f3</span>
-                                        <span class="message">🚀 Delivered 10+ iOS applications (4.5+ stars)</span>
-                                        <span class="branch">(feat/mobile-excellence)</span>
-                                        <span class="date">2021-2024</span>
-                                    </div>
-                                    <div class="commit-line achievement">
-                                        <span class="graph">| *</span>
-                                        <span class="hash">f2a9c84</span>
-                                        <span class="message">👥 Led cross-functional teams (20+ developers)</span>
-                                        <span class="branch">(feat/team-leadership)</span>
-                                        <span class="date">2019-2024</span>
-                                    </div>
-                                    <div class="commit-line achievement">
-                                        <span class="graph">| *</span>
-                                        <span class="hash">c5d7e92</span>
-                                        <span class="message">📱 Managed 5+ concurrent mobile projects</span>
-                                        <span class="branch">(feat/project-management)</span>
-                                        <span class="date">2018-2024</span>
-                                    </div>
-                                    <div class="commit-line">
-                                        <span class="graph">|/</span>
-                                    </div>
-                                    <div class="commit-line">
-                                        <span class="graph">*</span>
-                                        <span class="hash">3e7b5a1</span>
-                                        <span class="message">iOS Developer at LBPro Poland</span>
-                                        <span class="branch">(tag: foundation)</span>
-                                        <span class="date">2016-2017</span>
-                                    </div>
-                                    <div class="commit-line">
-                                        <span class="graph">|</span>
-                                    </div>
-                                    <div class="commit-line education">
-                                        <span class="graph">*</span>
-                                        <span class="hash">1a4d8c2</span>
-                                        <span class="message">🎓 Bachelor of Computer Science - Łodzi</span>
-                                        <span class="branch">(origin/education)</span>
-                                        <span class="date">2013-2017</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="terminal-line">
-                                    <span class="prompt">quang@career-journey:~$</span>
-                                    <span class="command">git branch -a</span>
-                                </div>
-                                <div class="branch-list">
-                                    <div class="branch-item current">* main</div>
-                                    <div class="branch-item">  feat/mobile-excellence</div>
-                                    <div class="branch-item">  feat/team-leadership</div>
-                                    <div class="branch-item">  feat/project-management</div>
-                                    <div class="branch-item remote">  remotes/origin/main</div>
-                                    <div class="branch-item remote">  remotes/origin/education</div>
-                                </div>
-                                
-                                <div class="terminal-line">
-                                    <span class="prompt">quang@career-journey:~$</span>
-                                    <span class="command">git show --stat HEAD</span>
-                                </div>
-                                <div class="commit-details">
-                                    <div class="commit-header">
-                                        <div>commit a7f3b21f8e9d2c5a4b7e1f6g3h8i9j0k1l2m3n4o</div>
-                                        <div>Author: Quang Tran Minh &lt;trmquang3103@gmail.com&gt;</div>
-                                        <div>Date: 2024-Present</div>
-                                        <div class="commit-message-detail">
-                                            <br/>
-                                            Senior iOS Developer at CBTW - Shahid Platform
-                                            <br/><br/>
-                                            • Developed iOS application for Shahid streaming platform
-                                            • Collaborated in international environment with 10-person team
-                                            • Contributed to architectural decisions for scalable solutions
-                                            • Excelled in remote collaboration and distributed workflows
-                                        </div>
-                                    </div>
-                                    <div class="file-stats">
-                                        <div> skills/swift.expertise           | ██████████ 100%</div>
-                                        <div> experience/streaming.platform   | ████████░░  80%</div>
-                                        <div> leadership/remote.collaboration  | ████████░░  85%</div>
-                                        <div> architecture/scalable.solutions | ███████░░░  75%</div>
-                                        <div class="stats-summary">4 files changed, 240 insertions(+), 15 deletions(-)</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="terminal-line">
-                                    <span class="prompt">quang@career-journey:~$</span>
-                                    <span class="command typing-cursor">|</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Content -->
-                    <div class="file-content" id="contact-content">
-                        <pre class="code-block"><span class="keyword">import</span> <span class="type">Foundation</span>
-<span class="keyword">import</span> <span class="type">Contacts</span>
-
-<span class="comment">// MARK: - Contact Information</span>
-<span class="keyword">class</span> <span class="type">ContactInfo</span>: <span class="type">ObservableObject</span> {
-    
-    <span class="comment">// Contact Details</span>
-    <span class="keyword">let</span> <span class="property">primaryEmail</span> = <span class="string">"trmquang3103@gmail.com"</span>
-    <span class="keyword">let</span> <span class="property">phoneNumber</span> = <span class="string">"+84-969-993-103"</span>
-    <span class="keyword">let</span> <span class="property">location</span> = <span class="string">"Hanoi, Vietnam"</span>
-    
-    <span class="comment">// Professional Links</span>
-    <span class="keyword">let</span> <span class="property">linkedIn</span> = <span class="string">"https://linkedin.com/in/quang-tran-minh"</span>
-    <span class="keyword">let</span> <span class="property">github</span> = <span class="string">"https://github.com/quang-tran-minh"</span>
-    
-    <span class="comment">// Availability</span>
-    <span class="keyword">let</span> <span class="property">availability</span> = <span class="type">Availability</span>(
-        startDate: <span class="string">"Immediate"</span>,
-        workSchedule: <span class="string">"Full-time, flexible hours"</span>,
-        workLocation: <span class="string">"Hybrid/Remote arrangements welcome"</span>,
-        languages: [<span class="string">"Native Vietnamese"</span>, <span class="string">"Fluent English"</span>]
-    )
-    
-    <span class="comment">// Professional Status</span>
-    <span class="keyword">func</span> <span class="function">getCurrentStatus</span>() -> <span class="type">String</span> {
-        <span class="keyword">return</span> <span class="string">"Available for new opportunities"</span>
-    }
-    
-    <span class="comment">// Additional Information</span>
-    <span class="keyword">func</span> <span class="function">getAdditionalInfo</span>() -> [<span class="type">String</span>] {
-        <span class="keyword">return</span> [
-            <span class="string">"References available upon request"</span>,
-            <span class="string">"Detailed project portfolio available"</span>,
-            <span class="string">"Open to discussing project opportunities"</span>
-        ]
-    }
-}</pre>
-                    </div>
-                </div>
-            </div>
+        <div class="dock-item" onclick="openApp('ios-cv')" title="iOS CV">📱</div>
+        <div class="dock-item" onclick="openApp('traditional-cv')" title="Traditional CV">📄</div>
+        <div class="dock-item" onclick="openApp('github')" title="GitHub">
+            <svg viewBox="0 0 24 24" style="width: 70%; height: 70%; fill: white;">
+                <path d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"/>
+            </svg>
         </div>
-
-        <!-- Inspector Panel -->
-        <div class="inspector">
-            <div class="inspector-header">
-                <h3>Inspector</h3>
-                <div class="inspector-tabs">
-                    <button class="inspector-tab active" data-tab="file">📄</button>
-                    <button class="inspector-tab" data-tab="quick">⚡</button>
-                    <button class="inspector-tab" data-tab="identity">🆔</button>
-                </div>
-            </div>
-
-            <div class="inspector-content">
-                <div class="inspector-panel active" id="file-inspector">
-                    <div class="property-group">
-                        <h4>File Properties</h4>
-                        <div class="property-item">
-                            <span class="property-label">Type:</span>
-                            <span class="property-value">Swift Source</span>
-                        </div>
-                        <div class="property-item">
-                            <span class="property-label">Lines:</span>
-                            <span class="property-value">20</span>
-                        </div>
-                        <div class="property-item">
-                            <span class="property-label">Size:</span>
-                            <span class="property-value">2.1 KB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="inspector-panel" id="quick-inspector">
-                    <div class="property-group">
-                        <h4>Quick Help</h4>
-                        <div class="help-content">
-                            <p>This file contains personal information and professional summary for Quang Tran Minh's
-                                CV.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="inspector-panel" id="identity-inspector">
-                    <div class="property-group">
-                        <h4>Identity</h4>
-                        <div class="property-item">
-                            <span class="property-label">Name:</span>
-                            <span class="property-value">PersonalInfo.swift</span>
-                        </div>
-                        <div class="property-item">
-                            <span class="property-label">Class:</span>
-                            <span class="property-value">PersonalInfo</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="dock-item" onclick="openApp('email')" title="Contact">
+            <svg viewBox="0 0 100 100" style="width: 80%; height: 80%;">
+                <defs>
+                    <linearGradient id="mailBgDock" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1E51EE"/>
+                        <stop offset="100%" style="stop-color:#19E6FF"/>
+                    </linearGradient>
+                </defs>
+                <path fill="url(#mailBgDock)" d="M63.6,5c9,0,13.5,0,18.4,1.5c5.3,1.9,9.5,6.1,11.4,11.4C95,22.8,95,27.4,95,36.4v27.2c0,9,0,13.5-1.5,18.4c-1.9,5.3-6.1,9.5-11.4,11.4C77.2,95,72.6,95,63.6,95H36.4c-9,0-13.5,0-18.4-1.5C12.7,91.5,8.5,87.4,6.6,82C5,77.2,5,72.7,5,63.6V36.4c0-9,0-13.5,1.5-18.4C8.5,12.7,12.7,8.5,18,6.6C22.8,5,27.4,5,36.4,5H63.6z"/>
+                <path fill="#FFFFFF" d="M78.9,69.5c-0.1,0-0.3,0.1-0.4,0.1h-57c-0.1,0-0.3,0-0.4-0.1l0,0l17.8-17.8l3.8,3.9c4.1,4.2,10.6,4.2,14.7,0l3.8-3.9L78.9,69.5L78.9,69.5L78.9,69.5z M80,67.6V32.3c0-0.2,0-0.4-0.1-0.5C79.8,32,62.2,50.2,62.2,50.2l17.8,17.8C80,67.8,80,67.7,80,67.6L80,67.6z M20,67.7V32.5c0-0.2,0-0.4,0.1-0.5c0.1,0.2,17.7,18.4,17.7,18.4L20.1,68.1C20,68,20,67.8,20,67.7L20,67.7z M79,30.6L56.3,53.8c-3.5,3.5-9.1,3.5-12.5,0L21.1,30.6C21,30.5,79,30.6,79,30.6L79,30.6z"/>
+            </svg>
         </div>
     </div>
 
-    <!-- Bottom Panel -->
-    <div class="bottom-panel">
-        <div class="console">
-            <div class="console-header">
-                <span class="console-title">Console Output</span>
-                <div class="console-controls">
-                    <button class="console-btn">Clear</button>
-                    <button class="console-btn">Filter</button>
-                </div>
-            </div>
-            <div class="console-content">
-                <div class="console-line success">
-                    <span class="timestamp">2024-01-15 14:30:12</span>
-                    <span class="message">✅ CV loaded successfully</span>
-                </div>
-                <div class="console-line info">
-                    <span class="timestamp">2024-01-15 14:30:13</span>
-                    <span class="message">ℹ️ 10+ years of experience validated</span>
-                </div>
-                <div class="console-line success">
-                    <span class="timestamp">2024-01-15 14:30:14</span>
-                    <span class="message">✅ All technical skills compiled successfully</span>
-                </div>
-            </div>
-        </div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
     </div>
 
-    <!-- AI Assistant Widget -->
-    <div class="ai-assistant" id="aiAssistant">
-        <div class="ai-toggle" id="aiToggle">
-            <div class="ai-icon">🤖</div>
-            <div class="ai-pulse"></div>
-        </div>
-        
-        <div class="ai-chat" id="aiChat">
-            <div class="ai-header">
-                <div class="ai-title">
-                    <span class="ai-avatar">🤖</span>
-                    <div>
-                        <div class="ai-name">CV Assistant</div>
-                        <div class="ai-status">Ask me about Quang's experience!</div>
-                    </div>
-                </div>
-                <button class="ai-close" id="aiClose">×</button>
-            </div>
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
             
-            <div class="ai-messages" id="aiMessages">
-                <div class="ai-message ai-message-bot">
-                    <div class="ai-message-content">
-                        Hi! I'm here to help you learn about Quang's experience. You can ask me questions like:
-                        <div class="ai-suggestions">
-                            <button class="ai-suggestion" data-question="What's his biggest achievement?">🏆 What's his biggest achievement?</button>
-                            <button class="ai-suggestion" data-question="How does he handle remote work?">🌍 How does he handle remote work?</button>
-                            <button class="ai-suggestion" data-question="What technologies does he love most?">⚡ What technologies does he love most?</button>
-                            <button class="ai-suggestion" data-question="Tell me about his leadership experience">👥 Tell me about his leadership experience</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = (Math.random() * 4 + 1) + 'px';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
             
-            <div class="ai-input-container">
-                <input type="text" class="ai-input" id="aiInput" placeholder="Ask me anything about Quang..." maxlength="200">
-                <button class="ai-send" id="aiSend">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
 
-    <!-- Download Options Menu -->
-    <div class="download-menu" id="downloadMenu">
-        <div class="download-option" data-format="pdf-traditional">
-            <div class="download-icon">📄</div>
-            <div class="download-info">
-                <div class="download-title">Traditional PDF</div>
-                <div class="download-desc">Classic resume format</div>
-            </div>
-        </div>
-        <div class="download-option" data-format="pdf-modern">
-            <div class="download-icon">🎨</div>
-            <div class="download-info">
-                <div class="download-title">Modern PDF</div>
-                <div class="download-desc">Stylized with colors</div>
-            </div>
-        </div>
-        <div class="download-option" data-format="interactive">
-            <div class="download-icon">💻</div>
-            <div class="download-info">
-                <div class="download-title">Interactive Demo</div>
-                <div class="download-desc">Standalone HTML file</div>
-            </div>
-        </div>
-        <div class="download-option" data-format="json">
-            <div class="download-icon">📊</div>
-            <div class="download-info">
-                <div class="download-title">JSON Data</div>
-                <div class="download-desc">Structured data format</div>
-            </div>
-        </div>
-    </div>
+        // Page transition
+        function transitionToPage(url, delay = 500) {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.add('active');
+            
+            setTimeout(() => {
+                window.location.href = url;
+            }, delay);
+        }
 
-    <!-- Smart Recommendations Panel -->
-    <div class="recommendations-panel" id="recommendationsPanel">
-        <div class="recommendations-header">
-            <div class="recommendations-title">
-                <span class="recommendations-icon">🧠</span>
-                Smart Recommendations
-            </div>
-            <button class="recommendations-close" id="recommendationsClose">×</button>
-        </div>
-        <div class="recommendations-content" id="recommendationsContent">
-            <div class="recommendation-item">
-                <div class="recommendation-role">Mobile Developer Role</div>
-                <div class="recommendation-text">Focus on iOS expertise and app development experience</div>
-                <div class="recommendation-sections">
-                    <span class="section-tag">TechnicalSkills.swift</span>
-                    <span class="section-tag">KeyProjects.swift</span>
-                </div>
-            </div>
-        </div>
-    </div>
+        // Open Xcode (main CV)
+        function openXcode() {
+            showNotification('Opening Xcode-style CV...');
+            transitionToPage('xcode-cv.html');
+        }
 
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/interactions.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/performance.js"></script>
-    <script src="js/advanced-features.js"></script>
+        // Open other apps
+        function openApp(app) {
+            switch(app) {
+                case 'ios-cv':
+                    showNotification('Opening iOS Developer CV...');
+                    transitionToPage('ios-developer-cv.html');
+                    break;
+                case 'traditional-cv':
+                    showNotification('Opening Traditional CV...');
+                    transitionToPage('cv_html_vcs.html');
+                    break;
+                case 'safari':
+                    showNotification('Portfolio website coming soon...');
+                    break;
+                case 'terminal':
+                    showNotification('Terminal functionality coming soon...');
+                    break;
+                case 'finder':
+                    showNotification('File explorer coming soon...');
+                    break;
+                case 'vscode':
+                    showNotification('Code editor view coming soon...');
+                    break;
+                case 'github':
+                    showNotification('Opening GitHub Profile...');
+                    window.open('https://github.com/trmquang93', '_blank');
+                    break;
+                case 'email':
+                    showNotification('Opening email...');
+                    window.location.href = 'mailto:trmquang3103@gmail.com';
+                    break;
+                default:
+                    showNotification('App coming soon...');
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.metaKey || e.ctrlKey) {
+                switch(e.key) {
+                    case '1':
+                        e.preventDefault();
+                        openXcode();
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        openApp('ios-cv');
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        openApp('traditional-cv');
+                        break;
+                    case 'r':
+                        e.preventDefault();
+                        location.reload();
+                        break;
+                }
+            }
+            
+            // Space bar to open Xcode
+            if (e.code === 'Space') {
+                e.preventDefault();
+                openXcode();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Add slight delay to app icon animations
+            const appIcons = document.querySelectorAll('.app-icon');
+            appIcons.forEach((icon, index) => {
+                icon.style.animationDelay = (index * 0.1 + 0.3) + 's';
+            });
+
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('Welcome! Click Xcode to view CV or use ⌘+1');
+            }, 2000);
+        });
+
+        // Handle page visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                // Reset particles when page becomes visible
+                const particles = document.getElementById('particles');
+                particles.innerHTML = '';
+                createParticles();
+            }
+        });
+
+        // Touch events for mobile
+        document.addEventListener('touchstart', (e) => {
+            // Prevent default touch behavior on app icons
+            if (e.target.closest('.app-icon')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Developer CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --text-accent: #0066cc;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-card: #fbfbfd;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --border: #d2d2d7;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Config Panel */
+        .config-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .config-toggle {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .config-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .config-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .config-modal.active {
+            display: flex;
+        }
+
+        .config-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .config-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .config-content textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-bottom: 1rem;
+            resize: vertical;
+        }
+
+        .config-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .config-buttons button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .config-buttons button:hover {
+            opacity: 0.8;
+        }
+
+        .btn-apply {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-cancel {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Loading Screen */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient);
+            opacity: 0.1;
+            transform: rotate(-45deg);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(-45deg) translateY(0); }
+            50% { transform: rotate(-45deg) translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow);
+            background: var(--gradient);
+            padding: 4px;
+            animation: scaleIn 0.6s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--text-accent);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--gradient);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem 0;
+            width: 50%;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            top: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: var(--text-accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content .description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content .achievements {
+            list-style: none;
+        }
+
+        .timeline-content .achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-content .achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--text-accent);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content .description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            color: var(--text-secondary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: var(--text-accent);
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .school {
+            color: var(--text-accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+                left: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .config-panel {
+                top: 10px;
+                right: 10px;
+            }
+
+            .config-toggle {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
+            .scroll-indicator,
+            .config-panel {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Configuration Panel -->
+    <div class="config-panel">
+        <button class="config-toggle" onclick="openConfig()">⚙️ Edit CV Data</button>
+    </div>
+
+    <!-- Configuration Modal -->
+    <div class="config-modal" id="configModal">
+        <div class="config-content">
+            <h3>Edit CV Data (JSON)</h3>
+            <textarea id="jsonEditor"></textarea>
+            <div class="config-buttons">
+                <button class="btn-cancel" onclick="closeConfig()">Cancel</button>
+                <button class="btn-apply" onclick="applyConfig()">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner">Loading...</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image">
+                <img id="profileImage" src="" alt="Profile">
+            </div>
+            <h1 id="name"></h1>
+            <p class="tagline" id="title"></p>
+            <div class="contact-info" id="contactInfo"></div>
+            <div class="scroll-indicator">↓</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About</h2>
+        <div class="about-content" id="aboutContent"></div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-grid" id="educationGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links" id="footerLinks"></div>
+        <p>&copy; <span id="year"></span> <span id="footerName"></span>. Crafted with passion.</p>
+    </footer>
+
+    <script>
+        // CV Data - Edit this object to customize your CV
+        let cvData = {
+            personal: {
+                name: "John Doe",
+                title: "Senior iOS Developer",
+                profileImage: "https://via.placeholder.com/200",
+                about: "Passionate iOS developer with 5+ years of experience creating beautiful, intuitive applications for millions of users. Specialized in Swift, SwiftUI, and modern iOS architectures. Committed to writing clean, maintainable code and delivering exceptional user experiences.",
+                contact: {
+                    email: "john.doe@example.com",
+                    phone: "+1 (555) 123-4567",
+                    location: "San Francisco, CA",
+                    linkedin: "linkedin.com/in/johndoe",
+                    github: "github.com/johndoe"
+                }
+            },
+            skills: [
+                {
+                    category: "Languages & Frameworks",
+                    items: ["Swift", "SwiftUI", "UIKit", "Objective-C", "Combine", "Core Data"]
+                },
+                {
+                    category: "Tools & Technologies",
+                    items: ["Xcode", "Git", "CocoaPods", "SPM", "Fastlane", "Jenkins", "Firebase"]
+                },
+                {
+                    category: "Design & Testing",
+                    items: ["Human Interface Guidelines", "Figma", "XCTest", "UI Testing", "TestFlight"]
+                }
+            ],
+            experience: [
+                {
+                    title: "Senior iOS Developer",
+                    company: "Tech Innovations Inc.",
+                    period: "2021 - Present",
+                    description: "Leading iOS development for flagship products with 10M+ active users.",
+                    achievements: [
+                        "Architected and developed new SwiftUI-based app from scratch",
+                        "Reduced app size by 40% through optimization",
+                        "Mentored team of 5 junior developers"
+                    ]
+                },
+                {
+                    title: "iOS Developer",
+                    company: "Mobile Solutions Ltd.",
+                    period: "2019 - 2021",
+                    description: "Developed and maintained multiple iOS applications.",
+                    achievements: [
+                        "Implemented real-time chat feature using WebSockets",
+                        "Improved app performance by 60%",
+                        "Published 3 apps to App Store"
+                    ]
+                },
+                {
+                    title: "Junior iOS Developer",
+                    company: "StartUp Hub",
+                    period: "2018 - 2019",
+                    description: "Started iOS development journey working on innovative startup projects.",
+                    achievements: [
+                        "Built first iOS app from concept to App Store",
+                        "Learned Swift and iOS best practices",
+                        "Collaborated with designers on UI/UX"
+                    ]
+                }
+            ],
+            projects: [
+                {
+                    name: "WeatherPro",
+                    description: "Beautiful weather app with AR features and widget support. Features real-time weather updates and stunning visualizations.",
+                    technologies: ["SwiftUI", "WidgetKit", "ARKit", "Core Location"],
+                    icon: "☀️",
+                    links: {
+                        appStore: "https://apps.apple.com/app/weatherpro",
+                        github: "https://github.com/johndoe/weatherpro"
+                    }
+                },
+                {
+                    name: "TaskMaster",
+                    description: "Productivity app with seamless sync across all Apple devices. Includes natural language processing for task creation.",
+                    technologies: ["Swift", "CloudKit", "Core ML", "WatchKit"],
+                    icon: "✓",
+                    links: {
+                        appStore: "https://apps.apple.com/app/taskmaster"
+                    }
+                },
+                {
+                    name: "FitTrack",
+                    description: "Health and fitness tracking app integrated with HealthKit. Features workout planning and progress visualization.",
+                    technologies: ["UIKit", "HealthKit", "Charts", "Core Motion"],
+                    icon: "💪",
+                    links: {
+                        github: "https://github.com/johndoe/fittrack"
+                    }
+                }
+            ],
+            education: [
+                {
+                    degree: "Bachelor of Computer Science",
+                    school: "University of California, Berkeley",
+                    period: "2014 - 2018"
+                },
+                {
+                    degree: "iOS Development Bootcamp",
+                    school: "Ray Wenderlich Academy",
+                    period: "2018"
+                }
+            ],
+            social: {
+                linkedin: "https://linkedin.com/in/johndoe",
+                github: "https://github.com/johndoe",
+                twitter: "https://twitter.com/johndoe",
+                website: "https://johndoe.dev"
+            }
+        };
+
+        // Configuration functions
+        function openConfig() {
+            document.getElementById('jsonEditor').value = JSON.stringify(cvData, null, 2);
+            document.getElementById('configModal').classList.add('active');
+        }
+
+        function closeConfig() {
+            document.getElementById('configModal').classList.remove('active');
+        }
+
+        function applyConfig() {
+            try {
+                const newData = JSON.parse(document.getElementById('jsonEditor').value);
+                cvData = newData;
+                renderCV();
+                closeConfig();
+                alert('CV data updated successfully!');
+            } catch (error) {
+                alert('Invalid JSON format. Please check your data and try again.');
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('configModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfig();
+            }
+        });
+
+        // Render CV
+        function renderCV() {
+            const data = cvData;
+
+            // Hide loading screen
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+
+            // Personal Info
+            document.getElementById('name').textContent = data.personal.name;
+            document.getElementById('title').textContent = data.personal.title;
+            document.getElementById('profileImage').src = data.personal.profileImage;
+            document.getElementById('profileImage').alt = data.personal.name;
+            
+            // Contact Info
+            const contactInfo = document.getElementById('contactInfo');
+            contactInfo.innerHTML = `
+                ${data.personal.contact.email ? `<a href="mailto:${data.personal.contact.email}" class="contact-item">📧 ${data.personal.contact.email}</a>` : ''}
+                ${data.personal.contact.phone ? `<a href="tel:${data.personal.contact.phone}" class="contact-item">📱 ${data.personal.contact.phone}</a>` : ''}
+                ${data.personal.contact.location ? `<span class="contact-item">📍 ${data.personal.contact.location}</span>` : ''}
+            `;
+
+            // About
+            document.getElementById('aboutContent').textContent = data.personal.about;
+
+            // Skills
+            const skillsGrid = document.getElementById('skillsGrid');
+            skillsGrid.innerHTML = data.skills.map(category => `
+                <div class="skill-category">
+                    <h3>${category.category}</h3>
+                    <div class="skill-tags">
+                        ${category.items.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            // Experience
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = data.experience.map(job => `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>${job.title}</h3>
+                        <div class="company">${job.company}</div>
+                        <div class="period">${job.period}</div>
+                        <div class="description">${job.description}</div>
+                        <ul class="achievements">
+                            ${job.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+
+            // Projects
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = data.projects.map(project => `
+                <div class="project-card">
+                    <div class="project-image">${project.icon}</div>
+                    <div class="project-content">
+                        <h3>${project.name}</h3>
+                        <p class="description">${project.description}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                        <div class="project-links">
+                            ${project.links.appStore ? `<a href="${project.links.appStore}" class="project-link">App Store →</a>` : ''}
+                            ${project.links.github ? `<a href="${project.links.github}" class="project-link">GitHub →</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Education
+            const educationGrid = document.getElementById('educationGrid');
+            educationGrid.innerHTML = data.education.map(edu => `
+                <div class="education-card">
+                    <h3>${edu.degree}</h3>
+                    <div class="school">${edu.school}</div>
+                    <div class="period">${edu.period}</div>
+                </div>
+            `).join('');
+
+            // Footer
+            const footerLinks = document.getElementById('footerLinks');
+            footerLinks.innerHTML = Object.entries(data.social).map(([platform, url]) => 
+                `<a href="${url}" target="_blank">${platform.charAt(0).toUpperCase() + platform.slice(1)}</a>`
+            ).join('');
+            
+            document.getElementById('year').textContent = new Date().getFullYear();
+            document.getElementById('footerName').textContent = data.personal.name;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCV();
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
